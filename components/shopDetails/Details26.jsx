@@ -37,39 +37,15 @@ export default function Details26() {
                   <div className="tf-product-info-title">
                     <h5>Cotton jersey top</h5>
                   </div>
-                  <div className="tf-product-info-badges">
-                    <div className="badges">Best seller</div>
-                    <div className="product-status-content">
-                      <i className="icon-lightning" />
-                      <p className="fw-6">
-                        Selling fast! 56 people have this in their carts.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="tf-product-info-price">
-                    <div className="price-on-sale">$8.00</div>
-                    <div className="compare-at-price">$10.00</div>
-                    <div className="badges-on-sale">
-                      <span>20</span>% OFF
-                    </div>
+
+                  <div className="tf-product-info-price ">
+                    <div className="price">$8.00</div>
                   </div>
                   <div className="tf-product-info-liveview">
                     <div className="liveview-count">20</div>
                     <p className="fw-6">People are viewing this right now</p>
                   </div>
-                  <div className="tf-product-info-countdown">
-                    <div className="countdown-wrap">
-                      <div className="countdown-title">
-                        <i className="icon-time tf-ani-tada" />
-                        <p>HURRY UP! SALE ENDS IN:</p>
-                      </div>
-                      <div className="tf-countdown style-1">
-                        <div className="js-countdown">
-                          <CountdownComponent labels="Days :,Hours :,Mins :,Secs" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+
                   <div className="tf-product-info-variant-picker">
                     <div className="variant-picker-item">
                       <div className="variant-picker-label">

@@ -6,6 +6,7 @@ import RecentProducts from "@/components/shopDetails/RecentProducts";
 import ShopDetailsTab from "@/components/shopDetails/ShopDetailsTab";
 import React from "react";
 import Link from "next/link";
+import DefaultShopDetailsNoZoom from "@/components/shopDetails/DefaultShopDetailsNoZoom";
 export const metadata = {
   title: "Product No Zoom || Ecomus - Ultimate Nextjs Ecommerce Template",
   description: "Ecomus - Ultimate Nextjs Ecommerce Template",
@@ -45,7 +46,7 @@ export default function page() {
           </div>
         </div>
       </div>
-      <DefaultShopDetails />
+      <DefaultShopDetailsNoZoom />
       <ShopDetailsTab />
       <Products />
       <RecentProducts />

@@ -68,7 +68,11 @@ export default function ProductCard9({ product }) {
             onClick={() => addToCompareItem(product.id)}
             className="box-icon bg_white compare btn-icon-action"
           >
-            <span className="icon icon-compare" />
+            <span
+              className={`icon icon-compare ${
+                isAddedtoCompareItem(product.id) ? "added" : ""
+              }`}
+            />
             <span className="tooltip">
               {" "}
               {isAddedtoCompareItem(product.id)
@@ -106,7 +110,9 @@ export default function ProductCard9({ product }) {
                 }  `}
                 onMouseOver={() => setCurrentImage(color.imgSrc)}
               >
-                <span className="tooltip">{color.name}</span>
+                <span className="tooltip">
+                  {color.tooltip ? color.tooltip : color.name}
+                </span>
                 <span className={`swatch-value ${color.colorClass}`} />
                 {color.imgSrc && (
                   <Image

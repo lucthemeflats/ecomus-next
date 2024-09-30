@@ -42,7 +42,11 @@ const renderer2 = ({ days, hours, minutes, seconds, completed }) => {
     );
   }
 };
-export default function CountdownComponent({ fullLabel = false, labels }) {
+export default function CountdownComponent({
+  fullLabel = false,
+  labels,
+  targetDate,
+}) {
   const [showCountdown, setShowCountdown] = useState(false);
   useEffect(() => {
     setShowCountdown(true);
@@ -99,9 +103,11 @@ export default function CountdownComponent({ fullLabel = false, labels }) {
         <Countdown
           date={
             new Date(
-              new Date().setDate(
-                new Date().getDate() + Math.floor(Math.random() * 100)
-              )
+              targetDate
+                ? targetDate
+                : new Date().setDate(
+                    new Date().getDate() + Math.floor(Math.random() * 100)
+                  )
             )
           }
           renderer={fullLabel ? renderer2 : renderer}

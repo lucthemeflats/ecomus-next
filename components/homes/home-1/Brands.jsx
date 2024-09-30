@@ -46,7 +46,7 @@ export default function Brands() {
             </SwiperSlide>
           ))}
         </Swiper>
-        <div className="sw-dots style-2 sw-pagination-brand justify-content-center sp106" />
+        <div className="d-md-none sw-dots style-2 sw-pagination-brand justify-content-center sp106" />
       </div>
     </section>
   );

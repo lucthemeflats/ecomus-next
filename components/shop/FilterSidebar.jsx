@@ -44,11 +44,14 @@ export default function FilterSidebar() {
             <div className="tf-shop-content wrapper-control-shop">
               <div className="meta-filter-shop" />
               <ProductGrid allproducts={finalSorted} gridItems={gridItems} />
-
-              {/* pagination */}
-              <ul className="tf-pagination-wrap tf-pagination-list tf-pagination-btn">
-                <Pagination />
-              </ul>
+              {/* pagination */}{" "}
+              {finalSorted.length ? (
+                <ul className="tf-pagination-wrap tf-pagination-list tf-pagination-btn">
+                  <Pagination />
+                </ul>
+              ) : (
+                ""
+              )}
             </div>
           </div>
         </div>

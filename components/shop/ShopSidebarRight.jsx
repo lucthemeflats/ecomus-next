@@ -51,10 +51,14 @@ export default function ShopSidebarRight() {
           <div className="tf-row-flex">
             <div className="tf-shop-content">
               <ProductGrid allproducts={finalSorted} gridItems={gridItems} />
-              {/* pagination */}
-              <ul className="tf-pagination-wrap tf-pagination-list">
-                <Pagination />
-              </ul>
+              {/* pagination */}{" "}
+              {finalSorted.length ? (
+                <ul className="tf-pagination-wrap tf-pagination-list">
+                  <Pagination />
+                </ul>
+              ) : (
+                ""
+              )}
             </div>{" "}
             <Sidebar />
           </div>

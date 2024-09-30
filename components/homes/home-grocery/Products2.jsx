@@ -95,11 +95,14 @@ export default function Products2() {
                       </Link>
                       <div className="list-product-btn absolute-2">
                         <a
-                          href="#"
                           onClick={() => addToWishlist(product.id)}
                           className="box-icon bg_white wishlist btn-icon-action"
                         >
-                          <span className="icon icon-heart" />
+                          <span
+                            className={`icon icon-heart ${
+                              isAddedtoWishlist(product.id) ? "added" : ""
+                            }`}
+                          />
                           <span className="tooltip">
                             {" "}
                             {isAddedtoWishlist(product.id)
@@ -115,7 +118,11 @@ export default function Products2() {
                           onClick={() => addToCompareItem(product.id)}
                           className="box-icon bg_white compare btn-icon-action"
                         >
-                          <span className="icon icon-compare" />
+                          <span
+                            className={`icon icon-compare ${
+                              isAddedtoCompareItem(product.id) ? "added" : ""
+                            }`}
+                          />
                           <span className="tooltip">
                             {" "}
                             {isAddedtoCompareItem(product.id)

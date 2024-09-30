@@ -61,7 +61,11 @@ export const ProductCard25 = ({ product }) => {
             onClick={() => addToCompareItem(product.id)}
             className="box-icon wishlist bg_white round btn-icon-action"
           >
-            <span className="icon icon-compare" />
+            <span
+              className={`icon icon-compare ${
+                isAddedtoCompareItem(product.id) ? "added" : ""
+              }`}
+            />
             <span className="tooltip">
               {" "}
               {isAddedtoCompareItem(product.id)

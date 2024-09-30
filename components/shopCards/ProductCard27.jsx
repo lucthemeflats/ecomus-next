@@ -48,11 +48,14 @@ export default function ProductCard27({ product }) {
             <span className="tooltip">Quick Add</span>
           </a>
           <a
-            href="#"
             onClick={() => addToWishlist(product.id)}
             className="box-icon bg_white wishlist btn-icon-action"
           >
-            <span className="icon icon-heart" />
+            <span
+              className={`icon icon-heart ${
+                isAddedtoWishlist(product.id) ? "added" : ""
+              }`}
+            />
             <span className="tooltip">
               {isAddedtoWishlist(product.id)
                 ? "Already Wishlisted"
@@ -67,7 +70,11 @@ export default function ProductCard27({ product }) {
             onClick={() => addToCompareItem(product.id)}
             className="box-icon bg_white compare btn-icon-action"
           >
-            <span className="icon icon-compare" />
+            <span
+              className={`icon icon-compare ${
+                isAddedtoCompareItem(product.id) ? "added" : ""
+              }`}
+            />
             <span className="tooltip">
               {" "}
               {isAddedtoCompareItem(product.id)

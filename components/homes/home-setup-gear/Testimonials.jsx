@@ -31,15 +31,19 @@ export default function Testimonials() {
                 slidesPerView: 1,
                 spaceBetween: 15,
               },
-              520: {
+              620: {
                 slidesPerView: 2,
                 spaceBetween: 15,
               },
               768: {
-                slidesPerView: 3,
+                slidesPerView: 2,
                 spaceBetween: 15,
               },
               1024: {
+                slidesPerView: 2,
+                spaceBetween: 30,
+              },
+              1200: {
                 slidesPerView: 3,
                 spaceBetween: 30,
               },

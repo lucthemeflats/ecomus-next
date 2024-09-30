@@ -287,7 +287,7 @@ export default function Details23() {
           </div>
         </div>
       </div>
-      <StickyItem />
+      <StickyItem soldOut />
     </section>
   );
 }

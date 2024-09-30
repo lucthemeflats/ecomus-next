@@ -147,7 +147,7 @@ export default function Slider1() {
       <Swiper
         direction="vertical"
         spaceBetween={10}
-        slidesPerView={5}
+        slidesPerView={6}
         className="tf-product-media-thumbs other-image-zoom"
         onSwiper={setThumbsSwiper}
         modules={[Thumbs]}

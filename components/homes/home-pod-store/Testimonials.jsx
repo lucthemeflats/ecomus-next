@@ -17,9 +17,26 @@ export default function Testimonials() {
             spaceBetween={30}
             slidesPerView={3}
             breakpoints={{
-              768: { slidesPerView: 3 },
-              480: { slidesPerView: 2 },
-              0: { slidesPerView: 1 },
+              0: {
+                slidesPerView: 1,
+                spaceBetween: 15,
+              },
+              620: {
+                slidesPerView: 2,
+                spaceBetween: 15,
+              },
+              768: {
+                slidesPerView: 2,
+                spaceBetween: 15,
+              },
+              1024: {
+                slidesPerView: 2,
+                spaceBetween: 30,
+              },
+              1200: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+              },
             }}
             autoplay={{ delay: 5000 }}
             modules={[Navigation, Pagination]}

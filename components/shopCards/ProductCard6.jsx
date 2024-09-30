@@ -70,7 +70,11 @@ export default function ProductCard6({ product }) {
             onClick={() => addToCompareItem(product.id)}
             className="box-icon compare btn-icon-action"
           >
-            <span className="icon icon-compare" />
+            <span
+              className={`icon icon-compare ${
+                isAddedtoCompareItem(product.id) ? "added" : ""
+              }`}
+            />
             <span className="tooltip">
               {" "}
               {isAddedtoCompareItem(product.id)

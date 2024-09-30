@@ -2,11 +2,11 @@
 
 import { useEffect, useState } from "react";
 const categories = [
-  { id: 1, name: "Fashion", isActive: true },
-  { id: 2, name: "Men", isActive: false },
-  { id: 3, name: "Women", isActive: false },
-  { id: 4, name: "Denim", isActive: false },
-  { id: 5, name: "Dress", isActive: false },
+  { id: 1, name: "Fashion", isActive: true, link: "/shop-default" },
+  { id: 2, name: "Men", isActive: false, link: "/shop-men" },
+  { id: 3, name: "Women", isActive: false, link: "/shop-women" },
+  { id: 4, name: "Denim", isActive: false, link: "/shop-default" },
+  { id: 5, name: "Dress", isActive: false, link: "/shop-default" },
 ];
 const filterColors = [
   { name: "Orange", colorClass: "bg_orange-3" },
@@ -32,6 +32,7 @@ const availabilities = [
 const sizes = ["S", "M", "L", "XL"];
 import Slider from "rc-slider";
 import { products1 } from "@/data/products";
+import Link from "next/link";
 export default function SidebarFilter({ setProducts }) {
   const [price, setPrice] = useState([10, 20]);
   const handlePrice = (value) => {
@@ -142,6 +143,13 @@ export default function SidebarFilter({ setProducts }) {
     selectedAvailabilities,
     selectedSizes,
   ]);
+  const clearFilter = () => {
+    setSelectedColors([]);
+    setSelectedBrands([]);
+    setSelectedAvailabilities([]);
+    setSelectedSizes([]);
+    setPrice([10, 20]);
+  };
 
   return (
     <div className="tf-shop-sidebar wrap-sidebar-mobile ">
@@ -160,9 +168,15 @@ export default function SidebarFilter({ setProducts }) {
           <ul className="list-categoris current-scrollbar mb_36">
             {categories.map((category) => (
               <li key={category.id} className={`cate-item`}>
-                <a href="#">
-                  <span>{category.name}</span>
-                </a>
+                {category.link ? (
+                  <Link href={category.link}>
+                    <span>{category.name}</span>
+                  </Link>
+                ) : (
+                  <a href="#">
+                    <span>{category.name}</span>
+                  </a>
+                )}
               </li>
             ))}
           </ul>
@@ -371,6 +385,13 @@ export default function SidebarFilter({ setProducts }) {
           </div>
         </div>
       </form>
+      <div className="mt-5"></div>
+      <a
+        className="tf-btn style-2 btn-fill rounded animate-hover-btn"
+        onClick={clearFilter}
+      >
+        Clear Filter
+      </a>
     </div>
   );
 }

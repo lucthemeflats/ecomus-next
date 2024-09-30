@@ -18,7 +18,7 @@ export default function Hero() {
           centeredSlides={true}
           breakpoints={{
             0: { slidesPerView: 1 },
-            768: { slidesPerView: 1.6 },
+            1300: { slidesPerView: 1.6 },
           }}
           modules={[Navigation]}
           navigation={{
@@ -28,14 +28,14 @@ export default function Hero() {
         >
           {sliderData4.map((slide, index) => (
             <SwiperSlide key={index}>
-              <div className="wrap-slider">
+              <div className="wrap-slider ">
                 <Image
                   width={1000}
                   height={649}
                   src={slide.imgSrc}
                   alt={slide.alt}
                 />
-                <div className="box-content text-center">
+                <div className="box-content text-center ">
                   <div className="container">
                     <h2 className="fade-item fade-item-1 heading">
                       {slide.heading}

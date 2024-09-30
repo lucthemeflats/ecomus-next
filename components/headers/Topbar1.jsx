@@ -1,7 +1,10 @@
+"use client";
 import React from "react";
 import Link from "next/link";
 import LanguageSelect from "../common/LanguageSelect";
 import CurrencySelect from "../common/CurrencySelect";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
 export default function Topbar1() {
   return (
     <div className="tf-top-bar bg_white line">
@@ -44,40 +47,40 @@ export default function Topbar1() {
             </li>
           </ul>
           <div className="text-center overflow-hidden">
-            <div
+            <Swiper
               className="swiper tf-sw-top_bar"
-              data-preview={1}
-              data-space={0}
-              data-loop="true"
-              data-speed={1000}
-              data-delay={2000}
+              slidesPerView={1}
+              modules={[Autoplay]}
+              speed={1000}
+              autoplay={{
+                delay: 2000,
+              }}
+              loop
             >
-              <div className="swiper-wrapper">
-                <div className="swiper-slide">
-                  <p className="top-bar-text fw-5">
-                    Spring Fashion Sale{" "}
-                    <Link
-                      href={`/shop-default`}
-                      title="all collection"
-                      className="tf-btn btn-line"
-                    >
-                      Shop now
-                      <i className="icon icon-arrow1-top-left" />
-                    </Link>
-                  </p>
-                </div>
-                <div className="swiper-slide">
-                  <p className="top-bar-text fw-5">
-                    Summer sale discount off 70%
-                  </p>
-                </div>
-                <div className="swiper-slide">
-                  <p className="top-bar-text fw-5">
-                    Time to refresh your wardrobe.
-                  </p>
-                </div>
-              </div>
-            </div>
+              <SwiperSlide className="swiper-slide">
+                <p className="top-bar-text fw-5">
+                  Spring Fashion Sale{" "}
+                  <Link
+                    href={`/shop-default`}
+                    title="all collection"
+                    className="tf-btn btn-line"
+                  >
+                    Shop now
+                    <i className="icon icon-arrow1-top-left" />
+                  </Link>
+                </p>
+              </SwiperSlide>
+              <SwiperSlide className="swiper-slide">
+                <p className="top-bar-text fw-5">
+                  Summer sale discount off 70%
+                </p>
+              </SwiperSlide>
+              <SwiperSlide className="swiper-slide">
+                <p className="top-bar-text fw-5">
+                  Time to refresh your wardrobe.
+                </p>
+              </SwiperSlide>
+            </Swiper>
           </div>
           <div className="top-bar-language tf-cur justify-content-end">
             <div className="tf-currencies">

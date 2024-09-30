@@ -1,5 +1,6 @@
 "use client";
 
+import { useContextElement } from "@/context/Context";
 import { products50 } from "@/data/products";
 import Image from "next/image";
 import Link from "next/link";
@@ -26,6 +27,15 @@ export default function Products2() {
       },
     },
   };
+  const { setQuickViewItem } = useContextElement();
+  const {
+    addToWishlist,
+    isAddedtoWishlist,
+    addToCompareItem,
+    isAddedtoCompareItem,
+    addProductToCart,
+    isAddedToCartProducts,
+  } = useContextElement();
   return (
     <section className="flat-spacing-13 pb_0">
       <div className="container">
@@ -74,26 +84,44 @@ export default function Products2() {
                     </Link>
                     <div className="list-product-btn absolute-2">
                       <a
-                        href="#"
+                        onClick={() => addToWishlist(product.id)}
                         className="box-icon bg_white wishlist btn-icon-action"
                       >
-                        <span className="icon icon-heart" />
-                        <span className="tooltip">Add to Wishlist</span>
-                        <span className="icon icon-delete" />
+                        <span
+                          className={`icon icon-heart ${
+                            isAddedtoWishlist(product.id) ? "added" : ""
+                          }`}
+                        />
+                        <span className="tooltip">
+                          {" "}
+                          {isAddedtoWishlist(product.id)
+                            ? "Already Wishlisted"
+                            : "Add to Wishlist"}
+                        </span>
                       </a>
                       <a
                         href="#compare"
                         data-bs-toggle="offcanvas"
                         aria-controls="offcanvasLeft"
+                        onClick={() => addToCompareItem(product.id)}
                         className="box-icon bg_white compare btn-icon-action"
                       >
-                        <span className="icon icon-compare" />
-                        <span className="tooltip">Add to Compare</span>
-                        <span className="icon icon-check" />
+                        <span
+                          className={`icon icon-compare ${
+                            isAddedtoCompareItem(product.id) ? "added" : ""
+                          }`}
+                        />
+                        <span className="tooltip">
+                          {" "}
+                          {isAddedtoCompareItem(product.id)
+                            ? "Already Compared"
+                            : "Add to Compare"}
+                        </span>
                       </a>
                       <a
                         href="#quick_view"
                         data-bs-toggle="modal"
+                        onClick={() => setQuickViewItem(product)}
                         className="box-icon bg_white quickview tf-btn-loading"
                       >
                         <span className="icon icon-view" />

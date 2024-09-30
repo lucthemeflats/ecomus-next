@@ -31,8 +31,8 @@ export default function Products() {
             }}
             modules={[Navigation, Pagination]}
             navigation={{
-              prevEl: ".snbp307",
-              nextEl: ".snbn307",
+              prevEl: ".snbp3070",
+              nextEl: ".snbn3070",
             }}
             pagination={{ clickable: true, el: ".spd307" }}
           >
@@ -42,10 +42,10 @@ export default function Products() {
               </SwiperSlide>
             ))}
           </Swiper>
-          <div className="nav-sw nav-next-slider nav-next-product box-icon w_46 round snbp307">
+          <div className="nav-sw nav-next-slider nav-next-product box-icon w_46 round snbp3070">
             <span className="icon icon-arrow-left" />
           </div>
-          <div className="nav-sw nav-prev-slider nav-prev-product box-icon w_46 round snbp307">
+          <div className="nav-sw nav-prev-slider nav-prev-product box-icon w_46 round snbn3070">
             <span className="icon icon-arrow-right" />
           </div>
           <div className="sw-dots style-2 sw-pagination-product justify-content-center spd307" />

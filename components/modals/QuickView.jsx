@@ -65,8 +65,12 @@ export default function QuickView() {
                   className="swiper tf-single-slide"
                 >
                   {[
-                    quickViewItem.imgSrc,
-                    quickViewItem.imgHoverSrc
+                    quickViewItem.isLookBookProduct
+                      ? "/images/products/orange-1.jpg"
+                      : quickViewItem.imgSrc,
+                    quickViewItem.isLookBookProduct
+                      ? "/images/products/pink-1.jpg"
+                      : quickViewItem.imgHoverSrc
                       ? quickViewItem.imgHoverSrc
                       : quickViewItem.imgSrc,
                   ].map((product, index) => (
@@ -124,7 +128,7 @@ export default function QuickView() {
                     <div className="variant-picker-label">
                       Color:
                       <span className="fw-6 variant-picker-label-value">
-                        Orange
+                        {currentColor.value}
                       </span>
                     </div>
                     <form className="variant-picker-values">
@@ -233,7 +237,11 @@ export default function QuickView() {
                       onClick={() => addToCompareItem(quickViewItem.id)}
                       className="tf-product-btn-wishlist hover-tooltip box-icon bg_white compare btn-icon-action"
                     >
-                      <span className="icon icon-compare" />
+                      <span
+                        className={`icon icon-compare ${
+                          isAddedtoCompareItem(quickViewItem.id) ? "added" : ""
+                        }`}
+                      />
                       <span className="tooltip">
                         {" "}
                         {isAddedtoCompareItem(quickViewItem.id)

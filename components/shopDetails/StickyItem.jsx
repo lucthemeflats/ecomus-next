@@ -6,7 +6,7 @@ import Quantity from "./Quantity";
 import { products4 } from "@/data/products";
 import { useContextElement } from "@/context/Context";
 
-export default function StickyItem() {
+export default function StickyItem({ soldOut = false }) {
   const { addProductToCart, isAddedToCartProducts } = useContextElement();
   return (
     <div className="tf-sticky-btn-atc">
@@ -42,16 +42,22 @@ export default function StickyItem() {
                 <div className="tf-product-info-quantity">
                   <Quantity />
                 </div>
-                <a
-                  onClick={() => addProductToCart(products4[2].id)}
-                  className="tf-btn btn-fill radius-3 justify-content-center fw-6 fs-14 flex-grow-1 animate-hover-btn"
-                >
-                  <span>
-                    {isAddedToCartProducts(products4[2].id)
-                      ? "Already Added"
-                      : "Add to cart"}
-                  </span>
-                </a>
+                {soldOut ? (
+                  <a className="tf-btn btns-sold-out cursor-not-allowed btn-fill radius-3 justify-content-center fw-6 fs-14 flex-grow-1 animate-hover-btn ">
+                    <span>Sold out</span>
+                  </a>
+                ) : (
+                  <a
+                    onClick={() => addProductToCart(products4[2].id)}
+                    className="tf-btn btn-fill radius-3 justify-content-center fw-6 fs-14 flex-grow-1 animate-hover-btn"
+                  >
+                    <span>
+                      {isAddedToCartProducts(products4[2].id)
+                        ? "Already Added"
+                        : "Add to cart"}
+                    </span>
+                  </a>
+                )}
               </div>
             </form>
           </div>

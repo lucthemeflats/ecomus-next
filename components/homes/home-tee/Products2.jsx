@@ -114,7 +114,11 @@ export default function Products2() {
                       onClick={() => addToCompareItem(slide.id)}
                       className="box-icon bg_white compare btn-icon-action"
                     >
-                      <span className="icon icon-compare" />
+                      <span
+                        className={`icon icon-compare ${
+                          isAddedtoCompareItem(slide.id) ? "added" : ""
+                        }`}
+                      />
                       <span className="tooltip">
                         {" "}
                         {isAddedtoCompareItem(slide.id)

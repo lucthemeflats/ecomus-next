@@ -5,6 +5,7 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
 import { Navigation, Pagination } from "swiper/modules";
+import { ProductCard } from "@/components/shopCards/ProductCard";
 export default function Lookbook() {
   return (
     <section className="flat-spacing-16">
@@ -62,7 +63,7 @@ export default function Lookbook() {
                 >
                   {products3.map((elm, i) => (
                     <SwiperSlide key={i}>
-                      <ProductCard5 product={elm} />
+                      <ProductCard product={elm} />
                     </SwiperSlide>
                   ))}
 

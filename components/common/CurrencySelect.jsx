@@ -27,7 +27,7 @@ const optionsData = [
   },
 ];
 export default function CurrencySelect({ topStart = false, light = false }) {
-  const [selected, setSelected] = useState(optionsData[0]);
+  const [selected, setSelected] = useState(optionsData[2]);
   const [isDDOpen, setIsDDOpen] = useState(false);
   const languageSelect = useRef();
 

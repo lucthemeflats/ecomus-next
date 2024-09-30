@@ -14,10 +14,6 @@ export default function Testimonials() {
             <Swiper
               spaceBetween={30}
               slidesPerView={1}
-              breakpoints={{
-                768: { slidesPerView: 2 },
-                992: { slidesPerView: 1 },
-              }}
               modules={[Navigation, Pagination, Thumbs]}
               navigation={{
                 prevEl: ".snbp268",
@@ -88,10 +84,6 @@ export default function Testimonials() {
             <Swiper
               spaceBetween={30}
               slidesPerView={1}
-              breakpoints={{
-                768: { slidesPerView: 2 },
-                992: { slidesPerView: 1 },
-              }}
               pagination={{ clickable: true, clickable: true }}
               onSwiper={setThumbsSwiper}
               modules={[Thumbs]}

@@ -154,7 +154,10 @@ export default function Cart() {
                         className="tf-cart-item_total"
                         cart-data-title="Total"
                       >
-                        <div className="cart-total">
+                        <div
+                          className="cart-total"
+                          style={{ minWidth: "60px" }}
+                        >
                           ${(elm.price * elm.quantity).toFixed(2)}
                         </div>
                       </td>

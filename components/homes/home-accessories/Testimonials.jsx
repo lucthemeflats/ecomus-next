@@ -3,7 +3,7 @@
 import { testimonials17, thumbSlides } from "@/data/testimonials";
 import Image from "next/image";
 import { useState } from "react";
-import { Thumbs } from "swiper/modules";
+import { Navigation, Pagination, Thumbs } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 export default function Testimonials() {
@@ -28,7 +28,14 @@ export default function Testimonials() {
                 },
               }}
               thumbs={{ swiper: thumbsSwiper }}
-              modules={[Thumbs]}
+              modules={[Thumbs, Navigation, Pagination]}
+              navigation={{
+                prevEl: ".snbpt12",
+                nextEl: ".snbnt12",
+              }}
+              pagination={{
+                el: ".spt12",
+              }}
             >
               {testimonials17.map((testimonial) => (
                 <SwiperSlide key={testimonial.id} className="swiper-slide">
@@ -86,14 +93,14 @@ export default function Testimonials() {
               ))}
             </Swiper>
             <div className="d-md-flex d-none box-sw-navigation">
-              <div className="nav-sw nav-next-slider line-white nav-next-tes-2">
+              <div className="nav-sw nav-next-slider line-white nav-next-tes-2 snbpt12">
                 <span className="icon icon-arrow-left" />
               </div>
-              <div className="nav-sw nav-prev-slider line-white nav-prev-tes-2">
+              <div className="nav-sw nav-prev-slider line-white nav-prev-tes-2 snbnt12">
                 <span className="icon icon-arrow-right" />
               </div>
             </div>
-            <div className="d-md-none sw-dots style-2 dots-white sw-pagination-tes-2" />
+            <div className="d-md-none sw-dots style-2 dots-white sw-pagination-tes-2 spt12" />
           </div>
           <div className="box-right">
             <Swiper

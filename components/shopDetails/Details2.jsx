@@ -59,7 +59,10 @@ export default function Details2() {
                       </div>
                       <div className="tf-countdown style-1">
                         <div className="js-countdown">
-                          <CountdownComponent labels="Days :,Hours :,Mins :,Secs" />
+                          <CountdownComponent
+                            targetDate="2025-08-07"
+                            labels="Days :,Hours :,Mins :,Secs"
+                          />
                         </div>
                       </div>
                     </div>

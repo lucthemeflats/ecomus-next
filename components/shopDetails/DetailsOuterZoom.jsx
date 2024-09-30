@@ -88,7 +88,10 @@ export default function DetailsOuterZoom({ product = allProducts[0] }) {
                       </div>
                       <div className="tf-countdown style-1">
                         <div className="js-countdown">
-                          <CountdownComponent labels="Days :,Hours :,Mins :,Secs" />
+                          <CountdownComponent
+                            targetDate="2025-08-07"
+                            labels="Days :,Hours :,Mins :,Secs"
+                          />
                         </div>
                       </div>
                     </div>
@@ -189,7 +192,11 @@ export default function DetailsOuterZoom({ product = allProducts[0] }) {
                         onClick={() => addToWishlist(product.id)}
                         className="tf-product-btn-wishlist hover-tooltip box-icon bg_white wishlist btn-icon-action"
                       >
-                        <span className="icon icon-heart" />
+                        <span
+                          className={`icon icon-heart ${
+                            isAddedtoWishlist(product.id) ? "added" : ""
+                          }`}
+                        />
                         <span className="tooltip">
                           {" "}
                           {isAddedtoWishlist(product.id)
@@ -205,7 +212,11 @@ export default function DetailsOuterZoom({ product = allProducts[0] }) {
                         aria-controls="offcanvasLeft"
                         className="tf-product-btn-wishlist hover-tooltip box-icon bg_white compare btn-icon-action"
                       >
-                        <span className="icon icon-compare" />
+                        <span
+                          className={`icon icon-compare ${
+                            isAddedtoCompareItem(product.id) ? "added" : ""
+                          }`}
+                        />
                         <span className="tooltip">
                           {isAddedtoCompareItem(product.id)
                             ? "Already Compared"

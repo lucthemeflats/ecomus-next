@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import CountdownComponent from "@/components/common/Countdown";
@@ -7,7 +7,14 @@ import Quantity from "@/components/shopDetails/Quantity";
 import { Gallery, Item } from "react-photoswipe-gallery";
 import { productBestcell } from "@/data/products";
 import { useContextElement } from "@/context/Context";
+const priceOptions = [
+  { id: "values-1", price: "$268.00", checked: true },
+  { id: "values-2", price: "$333.00", checked: false },
+  { id: "values-3", price: "$564.00", checked: false },
+  { id: "values-4", price: "$633.00", checked: false },
+];
 export default function BestSell() {
+  const [currentPrice, setCurrentPrice] = useState(priceOptions[0]);
   const {
     addProductToCart,
     isAddedToCartProducts,
@@ -93,7 +100,10 @@ export default function BestSell() {
                           </div>
                           <div className="tf-countdown style-1">
                             <div className="js-countdown">
-                              <CountdownComponent labels="Days :,Hours :,Mins :,Secs" />
+                              <CountdownComponent
+                                targetDate="2025-08-07"
+                                labels="Days :,Hours :,Mins :,Secs"
+                              />
                             </div>
                           </div>
                         </div>
@@ -103,47 +113,29 @@ export default function BestSell() {
                           <div className="variant-picker-label">
                             Denominations:
                             <span className="fw-6 variant-picker-label-value">
-                              $268.00
+                              {currentPrice.price}
                             </span>
                           </div>
                           <form className="variant-picker-values">
-                            <input
-                              type="radio"
-                              name="price"
-                              id="values-1"
-                              defaultChecked
-                            />
-                            <label
-                              className="style-text"
-                              htmlFor="values-1"
-                              data-value="$268.00"
-                            >
-                              <p>$268.00</p>
-                            </label>
-                            <input type="radio" name="price" id="values-2" />
-                            <label
-                              className="style-text"
-                              htmlFor="values-2"
-                              data-value="$333.00"
-                            >
-                              <p>$333.00</p>
-                            </label>
-                            <input type="radio" name="price" id="values-3" />
-                            <label
-                              className="style-text"
-                              htmlFor="values-3"
-                              data-value="$564.00"
-                            >
-                              <p>$564.00</p>
-                            </label>
-                            <input type="radio" name="price" id="values-4" />
-                            <label
-                              className="style-text"
-                              htmlFor="values-4"
-                              data-value="$633.00"
-                            >
-                              <p>$633.00</p>
-                            </label>
+                            {priceOptions.map((color) => (
+                              <React.Fragment key={color.id}>
+                                <input
+                                  id={color.id}
+                                  type="radio"
+                                  name="color1"
+                                  readOnly
+                                  checked={currentPrice == color}
+                                />
+                                <label
+                                  onClick={() => setCurrentPrice(color)}
+                                  className="style-text"
+                                  htmlFor={color.id}
+                                  data-value={color.value}
+                                >
+                                  <p>{color.price}</p>
+                                </label>
+                              </React.Fragment>
+                            ))}
                           </form>
                         </div>
                       </div>
@@ -256,7 +248,13 @@ export default function BestSell() {
                             onClick={() => addToWishlist(productBestcell[0].id)}
                             className="tf-product-btn-wishlist hover-tooltip box-icon bg_white wishlist btn-icon-action"
                           >
-                            <span className="icon icon-heart" />
+                            <span
+                              className={`icon icon-heart ${
+                                isAddedtoWishlist(productBestcell[0].id)
+                                  ? "added"
+                                  : ""
+                              }`}
+                            />
                             <span className="tooltip">
                               {isAddedtoWishlist(productBestcell[0].id)
                                 ? "Already Wishlisted"
@@ -273,7 +271,13 @@ export default function BestSell() {
                             aria-controls="offcanvasLeft"
                             className="tf-product-btn-wishlist hover-tooltip box-icon bg_white compare btn-icon-action"
                           >
-                            <span className="icon icon-compare" />
+                            <span
+                              className={`icon icon-compare ${
+                                isAddedtoCompareItem(productBestcell[0].id)
+                                  ? "added"
+                                  : ""
+                              }`}
+                            />
                             <span className="tooltip">
                               {" "}
                               {isAddedtoCompareItem(productBestcell[0].id)

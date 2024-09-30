@@ -13,15 +13,7 @@ export default function Login() {
                 We will send you an email to reset your password
               </p>
               <div>
-                <form
-                  onSubmit={(e) => e.preventDefault()}
-                  className=""
-                  id="login-form"
-                  action="#"
-                  method="post"
-                  acceptCharset="utf-8"
-                  data-mailchimp="true"
-                >
+                <form onSubmit={(e) => e.preventDefault()} className="">
                   <div className="tf-field style-1 mb_15">
                     <input
                       className="tf-field-input tf-input"
@@ -58,12 +50,7 @@ export default function Login() {
             <div id="login">
               <h5 className="mb_36">Log in</h5>
               <div>
-                <form
-                  onSubmit={(e) => e.preventDefault()}
-                  className=""
-                  id="login-form"
-                  acceptCharset="utf-8"
-                >
+                <form onSubmit={(e) => e.preventDefault()}>
                   <div className="tf-field style-1 mb_15">
                     <input
                       required

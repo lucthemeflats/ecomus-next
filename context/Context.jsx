@@ -45,6 +45,8 @@ export default function Context({ children }) {
   const addToWishlist = (id) => {
     if (!wishList.includes(id)) {
       setWishList((pre) => [...pre, id]);
+    } else {
+      setWishList((pre) => [...pre].filter((elm) => elm != id));
     }
   };
   const removeFromWishlist = (id) => {

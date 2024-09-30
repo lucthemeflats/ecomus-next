@@ -730,6 +730,27 @@ export const sliderData4 = [
     description: "Up to 40% off chargers, earbuds, and more.",
     btnText: "Shop collection",
   },
+  {
+    imgSrc: "/images/slider/accessories2_slideshow1.jpg",
+    alt: "fashion-slideshow",
+    heading: "Mix. Match. MagSafe",
+    description: "Snap on a case, wallet, wireless charger, or battery pack.",
+    btnText: "Shop collection",
+  },
+  {
+    imgSrc: "/images/slider/accessories2_slideshow2.jpg",
+    alt: "fashion-slideshow",
+    heading: "Ecomus Docking",
+    description: "Fast wireless charging on-the-go.",
+    btnText: "Shop collection",
+  },
+  {
+    imgSrc: "/images/slider/accessories2_slideshow3.jpg",
+    alt: "fashion-slideshow",
+    heading: "Accessory Sale",
+    description: "Up to 40% off chargers, earbuds, and more.",
+    btnText: "Shop collection",
+  },
 ];
 
 export const slides19 = [

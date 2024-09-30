@@ -1,5 +1,5 @@
 "use client";
-import { layouts, sortingOptions } from "@/data/shop";
+import { layouts } from "@/data/shop";
 import ProductGrid from "./ProductGrid";
 import { useState } from "react";
 import Pagination from "../common/Pagination";
@@ -51,9 +51,13 @@ export default function ShopDefault() {
             <div className="meta-filter-shop" />
             <ProductGrid allproducts={finalSorted} gridItems={gridItems} />
             {/* pagination */}
-            <ul className="tf-pagination-wrap tf-pagination-list tf-pagination-btn">
-              <Pagination />
-            </ul>
+            {finalSorted.length ? (
+              <ul className="tf-pagination-wrap tf-pagination-list tf-pagination-btn">
+                <Pagination />
+              </ul>
+            ) : (
+              ""
+            )}
           </div>
         </div>
       </section>

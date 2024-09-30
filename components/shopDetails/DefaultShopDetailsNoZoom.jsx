@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import Slider1 from "./sliders/Slider1";
+
 import Image from "next/image";
 import CountdownComponent from "../common/Countdown";
 import {
@@ -10,9 +10,10 @@ import {
 } from "@/data/singleProductOptions";
 import StickyItem from "./StickyItem";
 import Quantity from "./Quantity";
-import SliderWithGalleryPopup from "./sliders/SliderWithGalleryPopup";
 
-export default function DetailsPopup() {
+import Slider1 from "./sliders/Slider1";
+
+export default function DefaultShopDetailsNoZoom() {
   const [currentColor, setCurrentColor] = useState(colors[0]);
   const [currentSize, setCurrentSize] = useState(sizeOptions[0]);
   return (
@@ -26,7 +27,7 @@ export default function DetailsPopup() {
             <div className="col-md-6">
               <div className="tf-product-media-wrap sticky-top">
                 <div className="thumbs-slider">
-                  <SliderWithGalleryPopup />
+                  <Slider1 />
                 </div>
               </div>
             </div>

@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 const accountLinks = [
+  { href: "/my-account", label: "Dashboard" },
   { href: "/my-account-orders", label: "Orders" },
   { href: "/my-account-address", label: "Addresses" },
   { href: "/my-account-edit", label: "Account Details" },
@@ -12,9 +13,6 @@ export default function DashboardNav() {
   const pathname = usePathname();
   return (
     <ul className="my-account-nav">
-      <li>
-        <span className="my-account-nav-item active">Dashboard</span>
-      </li>
       {accountLinks.map((link, index) => (
         <li key={index}>
           <Link

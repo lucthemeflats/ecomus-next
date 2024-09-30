@@ -6,8 +6,13 @@ import Link from "next/link";
 import { useContextElement } from "@/context/Context";
 export default function ProductCard21({ product }) {
   const [currentImage, setCurrentImage] = useState(product.imgSrc);
-  const { setQuickViewItem, quickAddItem, addToWishlist, isAddedtoWishlist } =
-    useContextElement();
+  const {
+    setQuickViewItem,
+    quickAddItem,
+    addToWishlist,
+    isAddedtoWishlist,
+    isAddedtoCompareItem,
+  } = useContextElement();
   useEffect(() => {
     setCurrentImage(product.imgSrc);
   }, [product]);
@@ -66,9 +71,17 @@ export default function ProductCard21({ product }) {
               aria-controls="offcanvasLeft"
               className="box-icon bg_white compare btn-icon-action"
             >
-              <span className="icon icon-compare" />
-              <span className="tooltip">Add to Compare</span>
-              <span className="icon icon-check" />
+              <span
+                className={`icon icon-compare ${
+                  isAddedtoCompareItem(product.id) ? "added" : ""
+                }`}
+              />
+              <span className="tooltip">
+                {" "}
+                {isAddedtoCompareItem(product.id)
+                  ? "Already Compared"
+                  : "Add to Compare"}
+              </span>
             </a>
             <a
               href={product.quickViewLink}

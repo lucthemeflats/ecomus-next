@@ -3,7 +3,7 @@ import { layouts, sortingOptions } from "@/data/shop";
 import { useState } from "react";
 import Pagination from "../common/Pagination";
 import { ProductCard } from "../shopCards/ProductCard";
-import { products1 } from "@/data/products";
+
 import ShopFilter from "./ShopFilter";
 import Sorting from "./Sorting";
 
@@ -51,6 +51,16 @@ export default function ProductStyle1() {
           <div className="wrapper-control-shop">
             <div className="meta-filter-shop" />
             <div
+              style={{
+                width: "fit-content",
+                margin: "0  auto",
+                fontSize: "17px",
+                marginBottom: "24px",
+              }}
+            >
+              {finalSorted.length} product(s) found
+            </div>
+            <div
               className="grid-layout wrapper-shop"
               data-grid={`grid-${gridItems}`}
             >
@@ -59,10 +69,14 @@ export default function ProductStyle1() {
                 <ProductCard product={elm} key={i} />
               ))}
             </div>
-            {/* pagination */}
-            <ul className="tf-pagination-wrap tf-pagination-list tf-pagination-btn">
-              <Pagination />
-            </ul>
+            {/* pagination */}{" "}
+            {finalSorted.length ? (
+              <ul className="tf-pagination-wrap tf-pagination-list tf-pagination-btn">
+                <Pagination />
+              </ul>
+            ) : (
+              ""
+            )}
           </div>
         </div>
       </section>

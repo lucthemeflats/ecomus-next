@@ -102,3 +102,22 @@
     width: fit-content;
   }
 }
+.hero-accesories-slide {
+  background-color: rgba($color: #fff, $alpha: 0.7) !important;
+
+  top: 0 !important;
+  padding-top: 10%;
+  height: 100%;
+}
+@media only screen and (max-width: 767px) {
+  .flat-spacing-flash-sell {
+    padding-top: 70px;
+    padding-bottom: 23px;
+  }
+}
+.icon-heart.added::before {
+  content: "\e917"; /* Unicode for bin/trash symbol */
+}
+.icon-compare.added::before {
+  content: "\e911"; /* Unicode for bin/trash symbol */
+}

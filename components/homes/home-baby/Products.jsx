@@ -14,6 +14,8 @@ export default function Products() {
     isAddedtoWishlist,
     addToCompareItem,
     isAddedtoCompareItem,
+    addProductToCart,
+    isAddedToCartProducts,
   } = useContextElement();
   const swiperOptions = {
     slidesPerView: 4,
@@ -26,7 +28,7 @@ export default function Products() {
         slidesPerView: 2,
         spaceBetween: 15,
       },
-      640: {
+      0: {
         slidesPerView: 1,
       },
     },
@@ -36,7 +38,7 @@ export default function Products() {
     },
   };
   return (
-    <section className="flat-spacing-17 flat-flash-sale">
+    <section className="flat-spacing-17 flat-flash-sale flat-spacing-flash-sell">
       <div className="container">
         <div className="tf-flash-sale">
           <div className="heading-flash-sale">
@@ -86,18 +88,20 @@ export default function Products() {
                     </Link>
                     <div className="list-product-btn absolute-2">
                       <a
-                        href="#"
                         onClick={() => addToWishlist(product.id)}
                         className="box-icon bg_white wishlist btn-icon-action"
                       >
-                        <span className="icon icon-heart" />
+                        <span
+                          className={`icon icon-heart ${
+                            isAddedtoWishlist(product.id) ? "added" : ""
+                          }`}
+                        />
                         <span className="tooltip">
                           {" "}
                           {isAddedtoWishlist(product.id)
                             ? "Already Wishlisted"
                             : "Add to Wishlist"}
                         </span>
-                        <span className="icon icon-delete" />
                       </a>
                       <a
                         href="#compare"
@@ -106,7 +110,11 @@ export default function Products() {
                         onClick={() => addToCompareItem(product.id)}
                         className="box-icon bg_white compare btn-icon-action"
                       >
-                        <span className="icon icon-compare" />
+                        <span
+                          className={`icon icon-compare ${
+                            isAddedtoCompareItem(product.id) ? "added" : ""
+                          }`}
+                        />
                         <span className="tooltip">
                           {isAddedtoCompareItem(product.id)
                             ? "Already Compared"
@@ -124,12 +132,14 @@ export default function Products() {
                         <span className="tooltip">Quick View</span>
                       </a>
                     </div>
-                    {product.salePercentage && (
+                    {product.salePercentage ? (
                       <div className="on-sale-wrap text-end">
                         <div className="on-sale-item">
                           {product.salePercentage}%
                         </div>
                       </div>
+                    ) : (
+                      ""
                     )}
                   </div>
                   <div className="card-product-info">
@@ -182,18 +192,19 @@ export default function Products() {
                       </div>
                     </div>
                     <a
-                      href="#shoppingCart"
-                      data-bs-toggle="modal"
+                      onClick={() => addProductToCart(product.id)}
                       className="tf-btn tf-btn-loading"
                     >
-                      ADD TO CART
+                      {isAddedToCartProducts(product.id)
+                        ? "Already Added"
+                        : "ADD TO CART"}
                     </a>
                   </div>
                 </div>
               </SwiperSlide>
             ))}
           </Swiper>
-          <div className="sw-dots style-2 sw-pagination-product justify-content-center spdp2" />
+          <div className="sw-dots d-md-none style-2 sw-pagination-product justify-content-center spdp2" />
         </div>
       </div>
     </section>

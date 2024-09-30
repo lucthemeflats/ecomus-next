@@ -61,7 +61,7 @@ export default function Categories() {
               </div>
             </SwiperSlide>
           ))}
-          <div className="sw-dots style-2 sw-pagination-recent justify-content-center spdc2" />
+          <div className="sw-dots d-md-none style-2 sw-pagination-recent justify-content-center spdc2" />
         </Swiper>
       </div>
     </section>

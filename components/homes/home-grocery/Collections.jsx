@@ -45,7 +45,9 @@ export default function Collections() {
                         {slide.subheading}
                       </p>
                       <h5 className={`heading  fw-6 ${slide.color}`}>
-                        {slide.heading}
+                        {slide.heading.split("\n")[0]}
+                        <br />
+                        {slide.heading.split("\n")[1]}
                       </h5>
                       <button
                         className={`tf-btn style-3 ${slide.buttonClass} radius-60 animate-hover-btn`}

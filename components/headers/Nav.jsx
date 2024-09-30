@@ -260,11 +260,13 @@ export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
                       prevEl: ".snmpn1",
                       nextEl: ".snmnn1",
                     }}
+                    slidesPerView={2}
+                    spaceBetween={30}
                     className="swiper tf-product-header wrap-sw-over"
                   >
                     {[...products1]
                       .slice(0, 4)
-                      .map((elm) => ({ ...elm, sizes: false }))
+
                       .map((elm, i) => (
                         <SwiperSlide key={i} className="swiper-slide">
                           <ProductCard product={elm} />

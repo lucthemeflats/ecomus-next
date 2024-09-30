@@ -48,7 +48,10 @@ export default function Banner() {
             </div>
           </div>
           <div className="tf-content-wrap wow fadeInUp" data-wow-delay="0s">
-            <p className="subheading text-uppercase fw-7">
+            <p
+              className="subheading text-uppercase fw-7"
+              style={{ color: "#253d4e" }}
+            >
               PERFECT GIFT FOR YOU
             </p>
             <h2 className="heading fade-item fade-item-1 fw-6">

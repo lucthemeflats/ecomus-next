@@ -6,8 +6,13 @@ import { useContextElement } from "@/context/Context";
 export default function Productcard23({ product }) {
   const [currentImage, setCurrentImage] = useState(product.imgSrc);
   const { setQuickViewItem } = useContextElement();
-  const { setQuickAddItem, addToWishlist, isAddedtoWishlist } =
-    useContextElement();
+  const {
+    setQuickAddItem,
+    addToWishlist,
+    isAddedtoWishlist,
+    addToCompareItem,
+    isAddedtoCompareItem,
+  } = useContextElement();
   return (
     <div className="card-product list-layout">
       <div className="card-product-wrapper">
@@ -95,9 +100,25 @@ export default function Productcard23({ product }) {
                 : "Add to Wishlist"}
             </span>
           </a>
-          <a href="#" className="box-icon compare style-3 hover-tooltip">
-            <span className="icon icon-compare" />
-            <span className="tooltip">Add to Compare</span>
+
+          <a
+            href="#compare"
+            data-bs-toggle="offcanvas"
+            aria-controls="offcanvasLeft"
+            onClick={() => addToCompareItem(product.id)}
+            className="box-icon compare style-3 hover-tooltip"
+          >
+            <span
+              className={`icon icon-compare ${
+                isAddedtoCompareItem(product.id) ? "added" : ""
+              }`}
+            />
+            <span className="tooltip">
+              {" "}
+              {isAddedtoCompareItem(product.id)
+                ? "Already Compared"
+                : "Add to Compare"}
+            </span>
           </a>
           <a
             href="#quick_view"

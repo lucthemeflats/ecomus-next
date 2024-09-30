@@ -90,7 +90,7 @@ export default function ShopCart() {
                           </Link>
                           <div className="meta-variant">Light gray</div>
                           <div className="price fw-6">
-                            ${elm.price.toFixed(2)}
+                            ${elm.price?.toFixed(2)}
                           </div>
                           <div className="tf-mini-cart-btns">
                             <div className="wg-quantity small">
