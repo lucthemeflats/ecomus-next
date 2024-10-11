@@ -22,6 +22,7 @@ export default function Hero() {
         }}
         modules={[Pagination, Autoplay]}
         pagination={{ clickable: true, el: ".spd273" }}
+        className="tf-sw-slideshow "
       >
         {slidesData3.map((slide, index) => (
           <SwiperSlide key={index}>

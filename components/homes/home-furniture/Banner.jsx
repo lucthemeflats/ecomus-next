@@ -12,7 +12,7 @@ export default function Banner() {
         <div className="container">
           <Link
             href={`/shop-collection-sub`}
-            className="card-box text-lg-start text-center rounded-0 banner-gistcard-content"
+            className="card-box text-lg-start text-center rounded-0 banner-gistcard-content banner-furnicher"
           >
             <h3 className="subheading">FUNCTIONAL AND STYLISH</h3>
             <h3 className="heading">Mid-Century Modern</h3>

@@ -37,7 +37,14 @@ export default function Hero() {
               <div className="box-content">
                 <div className="container">
                   <p className="fade-item fade-item-1">{slide.text}</p>
-                  <h1 className="fade-item fade-item-2">{slide.heading}</h1>
+                  <h1 className="fade-item fade-item-2">
+                    {slide.heading.split("\n").map((line, i) => (
+                      <React.Fragment key={i}>
+                        {line}
+                        <br />
+                      </React.Fragment>
+                    ))}
+                  </h1>
                   <Link
                     href={`/shop-default`}
                     className="fade-item fade-item-3 rounded-full tf-btn btn-fill animate-hover-btn btn-xl radius-3"

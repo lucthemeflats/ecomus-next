@@ -110,7 +110,9 @@ export default function Testimonials() {
                   <div className="grid-img-group style-ter-1">
                     {images.map((image, i) => (
                       <div
-                        className={`box-img item-${i + 1} hover-img`}
+                        className={`box-img item-${
+                          i + 1
+                        } hover-img testimonial-hover-skincare`}
                         key={i}
                       >
                         <div className="img-style">

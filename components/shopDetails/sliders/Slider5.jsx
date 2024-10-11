@@ -1,128 +1,174 @@
 "use client";
 import Image from "next/image";
 import Drift from "drift-zoom";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Navigation, Thumbs } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Gallery, Item } from "react-photoswipe-gallery";
 
-const slidesThumbs = [
+const images = [
   {
-    imgSrc: "/images/shop/products/hmgoepprod18.jpg",
+    id: 1,
+    src: "/images/shop/products/p-d1.png",
+    alt: "",
+    width: 770,
+    height: 1075,
+    dataValue: "beige",
+  },
+  {
+    id: 2,
+    src: "/images/shop/products/hmgoepprod.jpg",
     alt: "",
     width: 713,
-    height: 713,
+    height: 1070,
+    dataValue: "beige",
   },
   {
-    imgSrc: "/images/shop/products/hmgoepprod19.jpg",
-    alt: "",
-    width: 1200,
-    height: 1200,
-  },
-  {
-    imgSrc: "/images/shop/products/hmgoepprod20.jpg",
-    alt: "",
-    width: 1200,
-    height: 1200,
-  },
-  {
-    imgSrc: "/images/shop/products/preview_images/img-3d-1.jpg",
-    alt: "",
-    width: 200,
-    height: 200,
-    is3D: true,
-  },
-  {
-    imgSrc: "/images/shop/products/hmgoepprod21.jpg",
-    alt: "",
-    width: 1200,
-    height: 1200,
-  },
-  {
-    imgSrc: "/images/shop/products/hmgoepprod22.jpg",
-    alt: "",
-    width: 1080,
-    height: 1080,
-  },
-  {
-    imgSrc: "/images/shop/products/hmgoepprod23.jpg",
-    alt: "",
-    width: 1200,
-    height: 1200,
-  },
-];
-
-const slides = [
-  {
-    href: "/images/shop/products/hmgoepprod18.jpg",
-    imgSrc: "/images/shop/products/hmgoepprod18.jpg",
-    dataZoom: "/images/shop/products/hmgoepprod18.jpg",
+    id: 3,
+    src: "/images/shop/products/hmgoepprod2.jpg",
+    alt: "img-compare",
     width: 713,
-    height: 713,
-    pswpWidth: "770px",
-    pswpHeight: "1075px",
-    isModel: false,
+    height: 1070,
+    dataValue: "beige",
   },
   {
-    href: "/images/shop/products/hmgoepprod19.jpg",
-    imgSrc: "/images/shop/products/hmgoepprod19.jpg",
-    dataZoom: "/images/shop/products/hmgoepprod19.jpg",
-    width: 1200,
-    height: 1200,
-    pswpWidth: "770px",
-    pswpHeight: "1075px",
-    isModel: false,
-  },
-  {
-    href: "/images/shop/products/hmgoepprod20.jpg",
-    imgSrc: "/images/shop/products/hmgoepprod20.jpg",
-    dataZoom: "/images/shop/products/hmgoepprod20.jpg",
-    width: 1200,
-    height: 1200,
-    pswpWidth: "770px",
-    pswpHeight: "1075px",
-    isModel: false,
-  },
-  {
-    isModel: true,
+    id: 4,
+    src: "/images/shop/products/preview_images/img-3d-1.jpg",
     modelSrc: "/images/shop/products/preview_images/dance-bag_3d.glb",
-    posterSrc: "/images/shop/products/preview_images/img-3d-1.jpg",
-    altText: "Alice Mini - Dusty Rose",
+    alt: "img-compare",
+    width: 713,
+    height: 1070,
+    dataValue: "beige",
+    is3D: true,
+    isModel: true,
   },
   {
-    href: "/images/shop/products/hmgoepprod21.jpg",
-    imgSrc: "/images/shop/products/hmgoepprod21.jpg",
-    dataZoom: "/images/shop/products/hmgoepprod21.jpg",
-    width: 1200,
-    height: 1200,
-    pswpWidth: "770px",
-    pswpHeight: "1075px",
-    isModel: false,
+    id: 5,
+    src: "/images/shop/products/hmgoepprod4.jpg",
+    alt: "img-compare",
+    width: 768,
+    height: 1152,
+    dataValue: "beige",
   },
   {
-    href: "/images/shop/products/hmgoepprod22.jpg",
-    imgSrc: "/images/shop/products/hmgoepprod22.jpg",
-    dataZoom: "/images/shop/products/hmgoepprod22.jpg",
-    width: 1080,
-    height: 1080,
-    pswpWidth: "770px",
-    pswpHeight: "1075px",
-    isModel: false,
+    id: 6,
+    src: "/images/shop/products/hmgoepprod5.jpg",
+    alt: "img-compare",
+    width: 713,
+    height: 1070,
+    dataValue: "beige",
   },
   {
-    href: "/images/shop/products/hmgoepprod23.jpg",
-    imgSrc: "/images/shop/products/hmgoepprod23.jpg",
-    dataZoom: "/images/shop/products/hmgoepprod23.jpg",
-    width: 1200,
-    height: 1200,
-    pswpWidth: "770px",
-    pswpHeight: "1075px",
-    isModel: false,
+    id: 7,
+    src: "/images/shop/products/hmgoepprod6.jpg",
+    alt: "",
+    width: 768,
+    height: 1152,
+    dataValue: "black",
+  },
+  {
+    id: 8,
+    src: "/images/shop/products/hmgoepprod7.jpg",
+    alt: "",
+    width: 713,
+    height: 1070,
+    dataValue: "black",
+  },
+  {
+    id: 9,
+    src: "/images/shop/products/hmgoepprod8.jpg",
+    alt: "",
+    width: 713,
+    height: 1070,
+    dataValue: "black",
+  },
+  {
+    id: 10,
+    src: "/images/shop/products/hmgoepprod9.jpg",
+    alt: "",
+    width: 768,
+    height: 1152,
+    dataValue: "black",
+  },
+  {
+    id: 11,
+    src: "/images/shop/products/hmgoepprod10.jpg",
+    alt: "",
+    width: 713,
+    height: 1070,
+    dataValue: "blue",
+  },
+  {
+    id: 12,
+    src: "/images/shop/products/hmgoepprod11.jpg",
+    alt: "",
+    width: 713,
+    height: 1070,
+    dataValue: "blue",
+  },
+  {
+    id: 13,
+    src: "/images/shop/products/hmgoepprod12.jpg",
+    alt: "",
+    width: 768,
+    height: 1152,
+    dataValue: "blue",
+  },
+  {
+    id: 14,
+    src: "/images/shop/products/hmgoepprod13.jpg",
+    alt: "",
+    width: 768,
+    height: 1152,
+    dataValue: "blue",
+  },
+  {
+    id: 15,
+    src: "/images/shop/products/hmgoepprod14.jpg",
+    alt: "",
+    width: 768,
+    height: 1152,
+    dataValue: "white",
+  },
+  {
+    id: 16,
+    src: "/images/shop/products/hmgoepprod15.jpg",
+    alt: "",
+    width: 768,
+    height: 1152,
+    dataValue: "white",
+  },
+  {
+    id: 17,
+    src: "/images/shop/products/hmgoepprod16.jpg",
+    alt: "",
+    width: 768,
+    height: 1152,
+    dataValue: "white",
+  },
+  {
+    id: 18,
+    src: "/images/shop/products/hmgoepprod17.jpg",
+    alt: "",
+    width: 768,
+    height: 1152,
+    dataValue: "white",
   },
 ];
 
-export default function Slider5() {
+export default function Slider5({
+  currentColor = "Beige",
+  handleColor = () => {},
+}) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const swiperRef = useRef(null);
+  useEffect(() => {
+    const slideIndex =
+      images.filter(
+        (elm) => elm.dataValue.toLowerCase() == currentColor.toLowerCase()
+      )[0].id - 1;
+    swiperRef.current.slideTo(slideIndex);
+  }, [currentColor]);
   useEffect(() => {
     if (typeof window !== "undefined") {
       // Dynamically import @google/model-viewer
@@ -199,7 +245,7 @@ export default function Slider5() {
           },
         }}
       >
-        {slidesThumbs.map((slide, index) => (
+        {images.map((slide, index) => (
           <SwiperSlide className="swiper-slide" key={index}>
             <div className={`item ${slide.is3D ? "position-relative" : ""}`}>
               {slide.is3D && (
@@ -209,9 +255,9 @@ export default function Slider5() {
               )}
               <Image
                 className="lazyload"
-                data-src={slide.imgSrc}
-                alt={slide.alt}
-                src={slide.imgSrc}
+                data-src={slide.src}
+                alt={""}
+                src={slide.src}
                 width={slide.width}
                 height={slide.height}
               />
@@ -231,8 +277,12 @@ export default function Slider5() {
           id="gallery-swiper-started"
           thumbs={{ swiper: thumbsSwiper }}
           modules={[Thumbs, Navigation]}
+          onSwiper={(swiper) => (swiperRef.current = swiper)}
+          onSlideChange={(swiper) => {
+            handleColor(images[swiper.activeIndex].dataValue);
+          }}
         >
-          {slides.map((slide, index) =>
+          {images.map((slide, index) =>
             slide.isModel ? (
               <SwiperSlide className="swiper-slide" key={index}>
                 <div className="item">
@@ -244,8 +294,8 @@ export default function Slider5() {
                       src={slide.modelSrc}
                       camera-controls="true"
                       data-shopify-feature="1.12"
-                      alt={slide.altText}
-                      poster={slide.posterSrc}
+                      alt={""}
+                      poster={slide.src}
                       className="tf-model-viewer-ui disabled"
                       tabindex="1"
                       data-js-focus-visible=""
@@ -262,26 +312,20 @@ export default function Slider5() {
             ) : (
               <SwiperSlide className="swiper-slide" key={index}>
                 <Item
-                  original={slide.imgSrc}
-                  thumbnail={slide.imgSrc}
+                  original={slide.src}
+                  thumbnail={slide.src}
                   width={slide.width}
                   height={slide.height}
                 >
                   {({ ref, open }) => (
-                    <a
-                      href={slide.href}
-                      onClick={open}
-                      className="item"
-                      data-pswp-width={slide.pswpWidth}
-                      data-pswp-height={slide.pswpHeight}
-                    >
+                    <a onClick={open} className="item">
                       <Image
                         ref={ref}
                         className="tf-image-zoom lazyload"
-                        data-zoom={slide.dataZoom}
-                        data-src={slide.imgSrc}
+                        data-zoom={slide.src}
+                        data-src={slide.src}
                         alt=""
-                        src={slide.imgSrc}
+                        src={slide.src}
                         width={slide.width}
                         height={slide.height}
                       />

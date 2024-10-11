@@ -1,5 +1,5 @@
 "use client";
-
+import Drift from "drift-zoom";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { Gallery, Item } from "react-photoswipe-gallery";
@@ -87,73 +87,9 @@ const images = [
     height: 1152,
     dataValue: "black",
   },
-  {
-    id: 11,
-    src: "/images/shop/products/hmgoepprod10.jpg",
-    alt: "",
-    width: 713,
-    height: 1070,
-    dataValue: "blue",
-  },
-  {
-    id: 12,
-    src: "/images/shop/products/hmgoepprod11.jpg",
-    alt: "",
-    width: 713,
-    height: 1070,
-    dataValue: "blue",
-  },
-  {
-    id: 13,
-    src: "/images/shop/products/hmgoepprod12.jpg",
-    alt: "",
-    width: 768,
-    height: 1152,
-    dataValue: "blue",
-  },
-  {
-    id: 14,
-    src: "/images/shop/products/hmgoepprod13.jpg",
-    alt: "",
-    width: 768,
-    height: 1152,
-    dataValue: "blue",
-  },
-  {
-    id: 15,
-    src: "/images/shop/products/hmgoepprod14.jpg",
-    alt: "",
-    width: 768,
-    height: 1152,
-    dataValue: "white",
-  },
-  {
-    id: 16,
-    src: "/images/shop/products/hmgoepprod15.jpg",
-    alt: "",
-    width: 768,
-    height: 1152,
-    dataValue: "white",
-  },
-  {
-    id: 17,
-    src: "/images/shop/products/hmgoepprod16.jpg",
-    alt: "",
-    width: 768,
-    height: 1152,
-    dataValue: "white",
-  },
-  {
-    id: 18,
-    src: "/images/shop/products/hmgoepprod17.jpg",
-    alt: "",
-    width: 768,
-    height: 1152,
-    dataValue: "white",
-  },
 ];
 
-export default function SliderWithGalleryPopup({
+export default function Slider1Image({
   currentColor = "Beige",
   handleColor = () => {},
 }) {
@@ -163,9 +99,56 @@ export default function SliderWithGalleryPopup({
     const slideIndex =
       images.filter(
         (elm) => elm.dataValue.toLowerCase() == currentColor.toLowerCase()
-      )[0].id - 1;
+      )[0]?.id - 1;
     swiperRef.current.slideTo(slideIndex);
   }, [currentColor]);
+  useEffect(() => {
+    // Function to initialize Drift
+    const imageZoom = () => {
+      const driftAll = document.querySelectorAll(".tf-image-zoom");
+      const pane = document.querySelector(".tf-zoom-main");
+
+      driftAll.forEach((el) => {
+        new Drift(el, {
+          zoomFactor: 2,
+          paneContainer: pane,
+          inlinePane: false,
+          handleTouch: false,
+          hoverBoundingBox: true,
+          containInline: true,
+        });
+      });
+    };
+    imageZoom();
+    const zoomElements = document.querySelectorAll(".tf-image-zoom");
+
+    const handleMouseOver = (event) => {
+      const parent = event.target.closest(".section-image-zoom");
+      if (parent) {
+        parent.classList.add("zoom-active");
+      }
+    };
+
+    const handleMouseLeave = (event) => {
+      const parent = event.target.closest(".section-image-zoom");
+      if (parent) {
+        parent.classList.remove("zoom-active");
+      }
+    };
+
+    zoomElements.forEach((element) => {
+      element.addEventListener("mouseover", handleMouseOver);
+      element.addEventListener("mouseleave", handleMouseLeave);
+    });
+
+    // Cleanup event listeners on component unmount
+    return () => {
+      zoomElements.forEach((element) => {
+        element.removeEventListener("mouseover", handleMouseOver);
+        element.removeEventListener("mouseleave", handleMouseLeave);
+      });
+    };
+  }, []); // Empty dependency array to run only once on mount
 
   return (
     <>
@@ -200,6 +183,7 @@ export default function SliderWithGalleryPopup({
           </SwiperSlide>
         ))}
       </Swiper>
+
       <Gallery>
         <Swiper
           spaceBetween={10}
@@ -208,7 +192,7 @@ export default function SliderWithGalleryPopup({
             nextEl: ".swiper-button-next",
             prevEl: ".swiper-button-prev",
           }}
-          className="tf-product-media-main tf-product-zoom-inner"
+          className="tf-product-media-main"
           id="gallery-swiper-started"
           thumbs={{ swiper: thumbsSwiper }}
           modules={[Thumbs, Navigation]}
@@ -233,7 +217,7 @@ export default function SliderWithGalleryPopup({
                     onClick={open}
                   >
                     <Image
-                      className="tf-image-zoom-magnifier ls-is-cached lazyloaded"
+                      className="tf-image-zoom lazyload"
                       data-zoom={slide.src}
                       data-src={slide.src}
                       ref={ref}
@@ -251,7 +235,7 @@ export default function SliderWithGalleryPopup({
           {/* Navigation buttons */}
           <div className="swiper-button-next button-style-arrow thumbs-next"></div>
           <div className="swiper-button-prev button-style-arrow thumbs-prev"></div>
-        </Swiper>
+        </Swiper>{" "}
       </Gallery>
     </>
   );

@@ -425,38 +425,162 @@ export const productDetailPages = [
   },
 ];
 
-export const allPagesLinks = [
-  { href: "/about-us", text: "About us" },
+export const pages = [
   {
-    href: "/brands",
-    text: "Brands",
-    extra: (
-      <div className="demo-label">
-        <span className="demo-new">New</span>
-      </div>
-    ),
+    href: "/about-us",
+    text: "About us",
+    className: "menu-link-text link text_black-2",
+    links: null,
   },
-  { href: "/brands-v2", text: "Brand V2" },
-  { href: "/contact-1", text: "Contact 1" },
-  { href: "/contact-2", text: "Contact 2" },
-  { href: "/faq-1", text: "FAQ 01" },
-  { href: "/faq-2", text: "FAQ 02" },
-  { href: "/our-store", text: "Our store" },
-  { href: "/store-locations", text: "Store locator" },
+  {
+    href: "#",
+    text: "Brands",
+    className: "menu-link-text link text_black-2",
+    links: [
+      {
+        href: "/brands",
+        text: "Brands",
+        className: "menu-link-text link text_black-2 position-relative",
+        label: "New",
+      },
+      {
+        href: "/brands-v2",
+        text: "Brand V2",
+        className: "menu-link-text link text_black-2",
+      },
+    ],
+  },
+  {
+    href: "#",
+    text: "Contact",
+    className: "menu-link-text link text_black-2",
+    links: [
+      {
+        href: "/contact-1",
+        text: "Contact 1",
+        className: "menu-link-text link text_black-2",
+      },
+      {
+        href: "/contact-2",
+        text: "Contact 2",
+        className: "menu-link-text link text_black-2",
+      },
+    ],
+  },
+  {
+    href: "#",
+    text: "FAQ",
+    className: "menu-link-text link text_black-2",
+    links: [
+      {
+        href: "/faq-1",
+        text: "FAQ 01",
+        className: "menu-link-text link text_black-2",
+      },
+      {
+        href: "/faq-2",
+        text: "FAQ 02",
+        className: "menu-link-text link text_black-2",
+      },
+    ],
+  },
+  {
+    href: "#",
+    text: "Store",
+    className: "menu-link-text link text_black-2",
+    links: [
+      {
+        href: "/our-store",
+        text: "Our store",
+        className: "menu-link-text link text_black-2",
+      },
+      {
+        href: "/store-locations",
+        text: "Store locator",
+        className: "menu-link-text link text_black-2",
+      },
+    ],
+  },
   {
     href: "/timeline",
     text: "Timeline",
-    extra: (
-      <div className="demo-label">
-        <span className="demo-new">New</span>
-      </div>
-    ),
+    className: "menu-link-text link text_black-2 position-relative",
+    label: "New",
   },
-  { href: "/view-cart", text: "View cart" },
-  { href: "/checkout", text: "Check out" },
-  { href: "/payment-confirmation", text: "Payment Confirmation" },
-  { href: "/payment-failure", text: "Payment Failure" },
-  { href: "/my-account", text: "My Account" },
+  {
+    href: "/view-cart",
+    text: "View cart",
+    className: "menu-link-text link text_black-2 position-relative",
+  },
+  {
+    href: "/checkout",
+    text: "Check out",
+    className: "menu-link-text link text_black-2 position-relative",
+  },
+  {
+    href: "#",
+    text: "Payment",
+    className: "menu-link-text link text_black-2",
+    links: [
+      {
+        href: "/payment-confirmation",
+        text: "Payment Confirmation",
+        className: "menu-link-text link text_black-2",
+      },
+      {
+        href: "/payment-failure",
+        text: "Payment Failure",
+        className: "menu-link-text link text_black-2",
+      },
+    ],
+  },
+  {
+    href: "#",
+    text: "My account",
+    className: "menu-link-text link text_black-2",
+    links: [
+      {
+        href: "/my-account",
+        text: "My account",
+        className: "menu-link-text link text_black-2",
+      },
+      {
+        href: "/my-account-orders",
+        text: "My order",
+        className: "menu-link-text link text_black-2",
+      },
+      {
+        href: "/my-account-orders-details",
+        text: "My order details",
+        className: "menu-link-text link text_black-2",
+      },
+      {
+        href: "/my-account-address",
+        text: "My address",
+        className: "menu-link-text link text_black-2",
+      },
+      {
+        href: "/my-account-edit",
+        text: "My account details",
+        className: "menu-link-text link text_black-2",
+      },
+      {
+        href: "/my-account-wishlist",
+        text: "My wishlist",
+        className: "menu-link-text link text_black-2",
+      },
+    ],
+  },
+  {
+    href: "/invoice",
+    text: "Invoice",
+    className: "menu-link-text link text_black-2 position-relative",
+  },
+  {
+    href: "/404",
+    text: "404",
+    className: "menu-link-text link text_black-2 position-relative",
+  },
 ];
 
 export const blogLinks = [
@@ -709,6 +833,17 @@ export const navItems = [
       { href: "/wishlist", label: "Wishlist" },
       { href: "/terms", label: "Terms and conditions" },
       { href: "/404", label: "404 page" },
+    ],
+  },
+  {
+    id: "dropdown-menu-five",
+    label: "Blogs",
+    links: [
+      { href: "/blog-grid", label: "Grid layout" },
+      { href: "/blog-sidebar-left", label: "Left sidebar" },
+      { href: "/blog-sidebar-right", label: "Right sidebar" },
+      { href: "/blog-list", label: "Blog list" },
+      { href: "/blog-detail/1", label: "Single Post" },
     ],
   },
 ];

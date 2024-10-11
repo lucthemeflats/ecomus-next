@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Slider6 from "./sliders/Slider6";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,6 +8,7 @@ import StickyItem from "./StickyItem";
 import { bundleproducts } from "@/data/products";
 import Quantity from "./Quantity";
 export default function Details25() {
+  const [quantity, setQuantity] = useState(1);
   return (
     <section
       className="flat-spacing-4 pt_0"
@@ -39,7 +40,7 @@ export default function Details25() {
                   </div>
                   <div className="tf-product-info-quantity">
                     <div className="quantity-title fw-6">Quantity</div>
-                    <Quantity />
+                    <Quantity setQuantity={setQuantity} />
                   </div>
                   <div className="tf-product-info-buy-button">
                     <form onSubmit={(e) => e.preventDefault()} className="">
@@ -48,7 +49,9 @@ export default function Details25() {
                         className="tf-btn btn-fill justify-content-center fw-6 fs-16 flex-grow-1 animate-hover-btn "
                       >
                         <span>Add to cart -&nbsp;</span>
-                        <span className="tf-qty-price">$8.00</span>
+                        <span className="tf-qty-price">
+                          ${(38 * quantity).toFixed(2)}
+                        </span>
                       </a>
                       <a
                         href="#"

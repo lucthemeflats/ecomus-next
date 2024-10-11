@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import CountdownComponent from "../common/Countdown";
 import {
@@ -13,6 +13,13 @@ import Quantity from "./Quantity";
 export default function Details4() {
   const [currentColor, setCurrentColor] = useState(colors[0]);
   const [currentSize, setCurrentSize] = useState(sizeOptions[0]);
+  const [quantity, setQuantity] = useState(1);
+
+  useEffect(() => {
+    document.querySelector(`.${currentColor.id}`).scrollIntoView({
+      behavior: "smooth",
+    });
+  }, [currentColor]);
   return (
     <section
       className="flat-spacing-4 pt_0"
@@ -43,8 +50,12 @@ export default function Details4() {
                     </div>
                   </div>
                   <div className="tf-product-info-price">
-                    <div className="price-on-sale">$8.00</div>
-                    <div className="compare-at-price">$10.00</div>
+                    <div className="price-on-sale">
+                      ${currentColor.price.toFixed(2)}
+                    </div>
+                    <div className="compare-at-price">
+                      ${currentColor.oldPrice.toFixed(2)}
+                    </div>
                     <div className="badges-on-sale">
                       <span>20</span>% OFF
                     </div>
@@ -143,7 +154,7 @@ export default function Details4() {
                   </div>
                   <div className="tf-product-info-quantity">
                     <div className="quantity-title fw-6">Quantity</div>
-                    <Quantity />
+                    <Quantity setQuantity={setQuantity} />
                   </div>
                   <div className="tf-product-info-buy-button">
                     <form onSubmit={(e) => e.preventDefault()} className="">
@@ -152,7 +163,9 @@ export default function Details4() {
                         className="tf-btn btn-fill justify-content-center fw-6 fs-16 flex-grow-1 animate-hover-btn "
                       >
                         <span>Add to cart -&nbsp;</span>
-                        <span className="tf-qty-price">$8.00</span>
+                        <span className="tf-qty-price">
+                          ${(currentColor.price * quantity).toFixed(2)}
+                        </span>
                       </a>
                       <a
                         href="#"

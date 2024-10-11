@@ -1,6 +1,6 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import Slider1 from "./sliders/Slider1";
+import React, { useState } from "react";
+
 import Image from "next/image";
 import CountdownComponent from "../common/Countdown";
 import {
@@ -14,10 +14,21 @@ import Quantity from "./Quantity";
 import Slider1ZoomOuter from "./sliders/Slider1ZoomOuter";
 import { allProducts } from "@/data/products";
 import { useContextElement } from "@/context/Context";
+import { openCartModal } from "@/utlis/openCartModal";
 
 export default function DetailsOuterZoom({ product = allProducts[0] }) {
-  const [currentColor, setCurrentColor] = useState(colors[1]);
+  const [currentColor, setCurrentColor] = useState(colors[0]);
   const [currentSize, setCurrentSize] = useState(sizeOptions[1]);
+  const [quantity, setQuantity] = useState(1);
+
+  const handleColor = (color) => {
+    const updatedColor = colors.filter(
+      (elm) => elm.value.toLowerCase() == color.toLowerCase()
+    )[0];
+    if (updatedColor) {
+      setCurrentColor(updatedColor);
+    }
+  };
 
   const {
     addProductToCart,
@@ -41,7 +52,10 @@ export default function DetailsOuterZoom({ product = allProducts[0] }) {
             <div className="col-md-6">
               <div className="tf-product-media-wrap sticky-top">
                 <div className="thumbs-slider">
-                  <Slider1ZoomOuter />
+                  <Slider1ZoomOuter
+                    handleColor={handleColor}
+                    currentColor={currentColor.value}
+                  />
                 </div>
               </div>
             </div>
@@ -65,13 +79,13 @@ export default function DetailsOuterZoom({ product = allProducts[0] }) {
                   </div>
                   <div className="tf-product-info-price">
                     <div className="price-on-sale">
-                      ${product.price.toFixed(2)}
+                      ${currentColor.price.toFixed(2)}
                     </div>
-                    {product.oldPrice && (
-                      <div className="compare-at-price">
-                        ${product.oldPrice}
-                      </div>
-                    )}
+
+                    <div className="compare-at-price">
+                      ${currentColor.oldPrice.toFixed(2)}
+                    </div>
+
                     <div className="badges-on-sale">
                       <span>20</span>% OFF
                     </div>
@@ -170,22 +184,25 @@ export default function DetailsOuterZoom({ product = allProducts[0] }) {
                   </div>
                   <div className="tf-product-info-quantity">
                     <div className="quantity-title fw-6">Quantity</div>
-                    <Quantity />
+                    <Quantity setQuantity={setQuantity} />
                   </div>
                   <div className="tf-product-info-buy-button">
                     <form onSubmit={(e) => e.preventDefault()} className="">
                       <a
-                        onClick={() => addProductToCart(product.id)}
+                        onClick={() => {
+                          openCartModal();
+                          addProductToCart(product.id);
+                        }}
                         className="tf-btn btn-fill justify-content-center fw-6 fs-16 flex-grow-1 animate-hover-btn"
                       >
                         <span>
                           {isAddedToCartProducts(product.id)
                             ? "Already Added"
                             : "Add to cart"}{" "}
-                          -
+                          -{" "}
                         </span>
                         <span className="tf-qty-price">
-                          ${product.price.toFixed(2)}
+                          ${(currentColor.price * quantity).toFixed(2)}
                         </span>
                       </a>
                       <a

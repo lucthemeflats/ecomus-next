@@ -18,7 +18,7 @@ export default function Hero() {
           speed={1000}
           pagination={{ clickable: true, el: ".shpd1" }}
           modules={[Pagination]}
-          className="radius-20"
+          className="radius-20 tf-sw-slideshow"
         >
           {slides19.map((slide, index) => (
             <SwiperSlide key={index}>

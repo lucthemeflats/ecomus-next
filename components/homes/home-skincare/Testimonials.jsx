@@ -94,7 +94,9 @@ export default function Testimonials() {
                     {group.images.map((image, i) => (
                       <div
                         key={i}
-                        className={`box-img item-${i + 1} hover-img`}
+                        className={`box-img item-${
+                          i + 1
+                        } hover-img testimonial-hover-skincare`}
                       >
                         <div className="img-style">
                           <Image

@@ -3,28 +3,55 @@ export const colors = [
     id: "values-beige",
     value: "Beige",
     className: "bg-color-beige",
+    price: 7,
+    oldPrice: 10,
   },
   {
     id: "values-black",
     value: "Black",
     className: "bg-color-black",
+    price: 8,
+    oldPrice: 10,
   },
   {
     id: "values-blue",
     value: "Blue",
     className: "bg-color-blue",
+    price: 9,
+    oldPrice: 11,
   },
   {
     id: "values-white",
     value: "White",
     className: "bg-color-white",
+    price: 10,
+    oldPrice: 12,
   },
 ];
+export const colors7 = [
+  {
+    id: "values-brown",
 
-export const colorOptions = [
-  { id: "values-brown", value: "Brown", defaultChecked: true },
-  { id: "values-light-purple", value: "Light Purple", defaultChecked: false },
-  { id: "values-light-green", value: "Light Green", defaultChecked: false },
+    className: "bg-color-brown",
+    value: "Brown",
+    price: 7,
+    oldPrice: 10,
+  },
+  {
+    id: "values-light-purple",
+    value: "Purple",
+    className: "bg_purple",
+    price: 8,
+    oldPrice: 10,
+  },
+  {
+    id: "values-light-green",
+
+    className: "bg_light-green",
+    value: "Light Green",
+    price: 9,
+    oldPrice: 11,
+  },
 ];
 
 export const colorOptions2 = [
@@ -35,30 +62,38 @@ export const colorOptions2 = [
     width: 713,
     height: 1070,
     defaultChecked: true,
+    price: 7,
+    oldPrice: 10,
   },
   {
     id: "values-black",
     value: "Black",
-    imgSrc: "/images/shop/products/hmgoepprod2.jpg",
+    imgSrc: "/images/shop/products/hmgoepprod6.jpg",
     width: 713,
     height: 1070,
     defaultChecked: false,
+    price: 8,
+    oldPrice: 10,
   },
   {
     id: "values-blue",
     value: "Blue",
-    imgSrc: "/images/shop/products/hmgoepprod3.jpg",
+    imgSrc: "/images/shop/products/hmgoepprod10.jpg",
     width: 713,
     height: 1070,
     defaultChecked: false,
+    price: 9,
+    oldPrice: 11,
   },
   {
     id: "values-white",
     value: "White",
-    imgSrc: "/images/shop/products/hmgoepprod4.jpg",
+    imgSrc: "/images/shop/products/hmgoepprod14.jpg",
     width: 768,
     height: 1152,
     defaultChecked: false,
+    price: 10,
+    oldPrice: 12,
   },
 ];
 
@@ -69,6 +104,8 @@ export const colorOptions3 = [
     className: "bg-color-light-blue",
     defaultChecked: true,
     additionalClasses: "sold-out-line",
+    price: 7,
+    oldPrice: 10,
   },
   {
     id: "values-black",
@@ -76,6 +113,8 @@ export const colorOptions3 = [
     className: "bg-color-black",
     defaultChecked: false,
     additionalClasses: "",
+    price: 8,
+    oldPrice: 10,
   },
   {
     id: "values-white",
@@ -83,6 +122,8 @@ export const colorOptions3 = [
     className: "bg-color-white",
     defaultChecked: false,
     additionalClasses: "",
+    price: 9,
+    oldPrice: 11,
   },
 ];
 
@@ -148,6 +189,8 @@ export const imageOptions = [
     imgHeight: 1070,
     alt: "",
     description: "Loose Fit Hoodie",
+    price: 7,
+    oldPrice: 10,
   },
   {
     id: "image-2",
@@ -157,6 +200,8 @@ export const imageOptions = [
     imgHeight: 1152,
     alt: "",
     description: "Slim Fit Fine-knit Turtleneck Sweater",
+    price: 8,
+    oldPrice: 10,
   },
 ];
 
@@ -167,24 +212,46 @@ export const priceOptions = [
   { id: "values-4", value: "$100", defaultChecked: false },
 ];
 
-export const colorOptions4 = [
+export const colorOptions5 = [
+  {
+    id: "values-beige",
+
+    value: "Beige",
+
+    colorClass: "bg_beige",
+    labelText: "Beige",
+    price: 7,
+    oldPrice: 10,
+  },
+  {
+    id: "values-pink",
+
+    value: "Pink",
+
+    colorClass: "bg_pink",
+    labelText: "Pink",
+    price: 8,
+    oldPrice: 10,
+  },
+  {
+    id: "values-blue",
+
+    value: "Blue",
+
+    colorClass: "bg_blue",
+    labelText: "Blue",
+    price: 9,
+    oldPrice: 11,
+  },
   {
     id: "values-brown",
+
     value: "Brown",
-    colorClass: "bg-color-brown",
-    defaultChecked: true,
-  },
-  {
-    id: "values-light-purple",
-    value: "Light Purple",
-    colorClass: "bg-color-light-purple",
-    defaultChecked: false,
-  },
-  {
-    id: "values-light-green",
-    value: "Light Green",
-    colorClass: "bg-color-light-green",
-    defaultChecked: false,
+    labelClass: "style-text rectangle-color color-btn active",
+    colorClass: "bg_brown",
+    labelText: "Brown",
+    price: 10,
+    oldPrice: 11,
   },
 ];
 
@@ -197,37 +264,25 @@ export const sizeOptions2 = [
 
 export const colors2 = [
   {
-    id: "color-1",
-    value: "Brown",
+    id: "values-beige",
+    value: "Beige",
     imageSrc: "/images/shop/products/hmgoepprod.jpg",
     alt: "",
     width: 713,
     height: 1070,
     defaultChecked: true,
+    price: 7,
+    oldPrice: 10,
   },
   {
-    id: "color-2",
-    value: "Light Purple",
+    id: "values-black",
+    value: "Black",
     imageSrc: "/images/shop/products/hmgoepprod6.jpg",
     alt: "",
     width: 768,
     height: 1152,
     defaultChecked: false,
+    price: 8,
+    oldPrice: 10,
   },
-];
-
-export const colors5 = [
-  { text: "Featured", isActive: true },
-  { text: "Light Purple", isActive: false },
-  { text: "Light Green", isActive: false },
-];
-
-export const colors6 = [
-  { colorClass: "bg-color-brown", text: "Featured", isActive: true },
-  {
-    colorClass: "bg-color-light-purple",
-    text: "Light Purple",
-    isActive: false,
-  },
-  { colorClass: "bg-color-light-green", text: "Light Green", isActive: false },
 ];

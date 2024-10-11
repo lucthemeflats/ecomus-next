@@ -39,7 +39,7 @@ export default function BannerCollections() {
                     />
                   </Link>
                   <div
-                    className="collection-content wow fadeInUp"
+                    className="collection-content wow fadeInUp banner-glass-content"
                     data-wow-delay={item.wowDelay}
                   >
                     <p className="subheading text-white letter-2">

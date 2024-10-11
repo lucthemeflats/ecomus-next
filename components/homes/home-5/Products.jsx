@@ -13,7 +13,7 @@ export default function Products() {
       <div className="container">
         <div className="flat-title wow fadeInUp" data-wow-delay="0s">
           <span className="title">Editor's Picks</span>
-          <div className="d-flex gap-16 align-items-center">
+          <div className="d-flex gap-16 align-items-center box-pagi-arr">
             <div className="nav-sw-arrow nav-next-slider nav-next-product snbn127">
               <span className="icon icon-arrow1-left"></span>
             </div>

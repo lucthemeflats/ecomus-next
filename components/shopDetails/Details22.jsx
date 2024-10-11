@@ -1,14 +1,16 @@
 "use client";
 import React, { useState } from "react";
-import Slider1 from "./sliders/Slider1";
+
 import Image from "next/image";
 import { paymentImages, sizeOptions2 } from "@/data/singleProductOptions";
 import StickyItem from "./StickyItem";
 import Quantity from "./Quantity";
-import DetailsOuterZoom from "./DetailsOuterZoom";
+
 import Slider1ZoomOuter from "./sliders/Slider1ZoomOuter";
+import Slider1PreOrders from "./sliders/Slider1PreOrders";
 export default function Details22() {
   const [currentSize, setCurrentSize] = useState(sizeOptions2[0]);
+  const [quantity, setQuantity] = useState(1);
   return (
     <section
       className="flat-spacing-4 pt_0"
@@ -20,7 +22,7 @@ export default function Details22() {
             <div className="col-md-6">
               <div className="tf-product-media-wrap sticky-top">
                 <div className="thumbs-slider">
-                  <Slider1ZoomOuter />
+                  <Slider1PreOrders />
                 </div>
               </div>
             </div>
@@ -87,7 +89,7 @@ export default function Details22() {
                   </div>
                   <div className="tf-product-info-quantity">
                     <div className="quantity-title fw-6">Quantity</div>
-                    <Quantity />
+                    <Quantity setQuantity={setQuantity} />
                   </div>
                   <div className="tf-product-info-buy-button">
                     <form onSubmit={(e) => e.preventDefault()} className="">
@@ -96,7 +98,9 @@ export default function Details22() {
                         className="tf-btn btn-fill justify-content-center fw-6 fs-16 flex-grow-1 animate-hover-btn "
                       >
                         <span>Add to cart -&nbsp;</span>
-                        <span className="tf-qty-price">$8.00</span>
+                        <span className="tf-qty-price">
+                          ${(8 * quantity).toFixed(2)}
+                        </span>
                       </a>
                       <a
                         href="#"

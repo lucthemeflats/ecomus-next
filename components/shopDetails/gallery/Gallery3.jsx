@@ -4,34 +4,150 @@ import { useEffect } from "react";
 import Drift from "drift-zoom";
 import { Gallery, Item } from "react-photoswipe-gallery";
 
-const productImages = [
+const images = [
   {
-    id: "image-color-brown",
-
+    id: "",
+    src: "/images/shop/products/p-d1.png",
+    alt: "",
+    width: 770,
+    height: 1075,
+    dataValue: "beige",
+  },
+  {
+    id: 2,
     src: "/images/shop/products/hmgoepprod.jpg",
+    alt: "",
     width: 713,
     height: 1070,
+    dataValue: "beige",
   },
   {
-    id: "image-color-light-purple",
-
+    id: 3,
     src: "/images/shop/products/hmgoepprod2.jpg",
+    alt: "img-compare",
     width: 713,
     height: 1070,
+    dataValue: "beige",
   },
   {
-    id: "image-color-light-green",
-
+    id: 4,
     src: "/images/shop/products/hmgoepprod3.jpg",
+    alt: "img-compare",
     width: 713,
     height: 1070,
+    dataValue: "beige",
   },
   {
-    id: "image-color-light-green",
-
+    id: 5,
     src: "/images/shop/products/hmgoepprod4.jpg",
+    alt: "img-compare",
     width: 768,
     height: 1152,
+    dataValue: "beige",
+  },
+  {
+    id: 6,
+    src: "/images/shop/products/hmgoepprod5.jpg",
+    alt: "img-compare",
+    width: 713,
+    height: 1070,
+    dataValue: "beige",
+  },
+  {
+    id: "values-black",
+    src: "/images/shop/products/hmgoepprod6.jpg",
+    alt: "",
+    width: 768,
+    height: 1152,
+    dataValue: "black",
+  },
+  {
+    id: 8,
+    src: "/images/shop/products/hmgoepprod7.jpg",
+    alt: "",
+    width: 713,
+    height: 1070,
+    dataValue: "black",
+  },
+  {
+    id: 9,
+    src: "/images/shop/products/hmgoepprod8.jpg",
+    alt: "",
+    width: 713,
+    height: 1070,
+    dataValue: "black",
+  },
+  {
+    id: 10,
+    src: "/images/shop/products/hmgoepprod9.jpg",
+    alt: "",
+    width: 768,
+    height: 1152,
+    dataValue: "black",
+  },
+  {
+    id: "values-blue",
+    src: "/images/shop/products/hmgoepprod10.jpg",
+    alt: "",
+    width: 713,
+    height: 1070,
+    dataValue: "blue",
+  },
+  {
+    id: 12,
+    src: "/images/shop/products/hmgoepprod11.jpg",
+    alt: "",
+    width: 713,
+    height: 1070,
+    dataValue: "blue",
+  },
+  {
+    id: 13,
+    src: "/images/shop/products/hmgoepprod12.jpg",
+    alt: "",
+    width: 768,
+    height: 1152,
+    dataValue: "blue",
+  },
+  {
+    id: 14,
+    src: "/images/shop/products/hmgoepprod13.jpg",
+    alt: "",
+    width: 768,
+    height: 1152,
+    dataValue: "blue",
+  },
+  {
+    id: "values-white",
+    src: "/images/shop/products/hmgoepprod14.jpg",
+    alt: "",
+    width: 768,
+    height: 1152,
+    dataValue: "white",
+  },
+  {
+    id: 16,
+    src: "/images/shop/products/hmgoepprod15.jpg",
+    alt: "",
+    width: 768,
+    height: 1152,
+    dataValue: "white",
+  },
+  {
+    id: 17,
+    src: "/images/shop/products/hmgoepprod16.jpg",
+    alt: "",
+    width: 768,
+    height: 1152,
+    dataValue: "white",
+  },
+  {
+    id: 18,
+    src: "/images/shop/products/hmgoepprod17.jpg",
+    alt: "",
+    width: 768,
+    height: 1152,
+    dataValue: "white",
   },
 ];
 
@@ -99,7 +215,7 @@ export default function Gallery3() {
               <a className="item" onClick={open}>
                 <Image
                   ref={ref}
-                  className="tf-image-zoom lazyload"
+                  className="tf-image-zoom lazyload values-beige"
                   data-zoom="/images/shop/products/hmgoepprod31.jpg"
                   data-src="/images/shop/products/hmgoepprod31.jpg"
                   alt=""
@@ -116,7 +232,7 @@ export default function Gallery3() {
             className="d-grid grid-template-columns-2 gap-10"
             id="gallery-started"
           >
-            {productImages.map((image, index) => (
+            {images.slice(1).map((image, index) => (
               <Item
                 original={image.src}
                 thumbnail={image.src}
@@ -127,7 +243,7 @@ export default function Gallery3() {
                 {({ ref, open }) => (
                   <a className="item" onClick={open}>
                     <Image
-                      className="radius-10 tf-image-zoom lazyload"
+                      className={`radius-10 tf-image-zoom lazyload ${image.id}`}
                       id={image.id}
                       ref={ref}
                       alt=""

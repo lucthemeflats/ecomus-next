@@ -53,7 +53,7 @@ export default function Categories() {
                       height={229}
                     />
                   </Link>
-                  <div className="collection-content">
+                  <div className="collection-content ">
                     <Link
                       href={`/shop-collection-sub`}
                       className="link title font-gloock"

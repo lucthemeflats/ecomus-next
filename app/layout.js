@@ -29,6 +29,7 @@ import { usePathname } from "next/navigation";
 import NewsletterModal from "@/components/modals/NewsletterModal";
 import ShareModal from "@/components/modals/ShareModal";
 import ScrollTop from "@/components/common/ScrollTop";
+import RtlToggle from "@/components/common/RtlToggle";
 
 export default function RootLayout({ children }) {
   const pathname = usePathname();
@@ -114,10 +115,12 @@ export default function RootLayout({ children }) {
 
   useEffect(() => {
     const header = document.querySelector("header");
-    if (scrollDirection == "up") {
-      header.style.top = "0px";
-    } else {
-      header.style.top = "-185px";
+    if (header) {
+      if (scrollDirection == "up") {
+        header.style.top = "0px";
+      } else {
+        header.style.top = "-185px";
+      }
     }
   }, [scrollDirection]);
   useEffect(() => {
@@ -128,30 +131,62 @@ export default function RootLayout({ children }) {
     });
     wow.init();
   }, [pathname]);
+  const [showChild, setShowChild] = useState(false);
+  useEffect(() => {
+    if (localStorage.getItem("direction")) {
+      // document.documentElement.dir = JSON.parse(
+      //   localStorage.getItem("direction")?.dir
+      // );
+      document.documentElement.dir = JSON.parse(
+        localStorage.getItem("direction")
+      ).dir;
+      document.body.classList.add(
+        JSON.parse(localStorage.getItem("direction")).dir
+      );
+    } else {
+      document.documentElement.dir = "ltr";
+    }
+    setTimeout(() => {
+      setShowChild(true);
+      document.getElementById("preloader").classList.add("disabled");
+    }, 800);
+  });
   return (
     <html lang="en">
-      <body className="preload-wrapper popup-loader">
+      <body className="preload-wrapper">
+        <div className="preload preload-container" id="preloader">
+          <div className="preload-logo">
+            <div className="spinner"></div>
+          </div>
+        </div>
         <Context>
-          <div id="wrapper">{children}</div>
-          <HomesModal /> <QuickView />
-          <QuickAdd />
-          <ProductSidebar />
-          <Compare />
-          <ShopCart />
-          <AskQuestion />
-          <BlogSidebar />
-          <ColorCompare />
-          <DeliveryReturn />
-          <FindSize />
-          <Login />
-          <MobileMenu />
-          <Register />
-          <ResetPass />
-          <SearchModal />
-          <ToolbarBottom />
-          <ToolbarShop />
-          <NewsletterModal />
-          <ShareModal />
+          {showChild ? (
+            <>
+              <div id="wrapper">{children}</div>
+              <RtlToggle />
+              <HomesModal /> <QuickView />
+              <QuickAdd />
+              <ProductSidebar />
+              <Compare />
+              <ShopCart />
+              <AskQuestion />
+              <BlogSidebar />
+              <ColorCompare />
+              <DeliveryReturn />
+              <FindSize />
+              <Login />
+              <MobileMenu />
+              <Register />
+              <ResetPass />
+              <SearchModal />
+              <ToolbarBottom />
+              <ToolbarShop />
+              <NewsletterModal />
+              <ShareModal />{" "}
+            </>
+          ) : (
+            " "
+          )}
         </Context>
         <ScrollTop />
       </body>

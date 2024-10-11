@@ -1,17 +1,19 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import { colorOptions, paymentImages } from "@/data/singleProductOptions";
+import { paymentImages } from "@/data/singleProductOptions";
 import StickyItem from "./StickyItem";
 
 import Quantity from "./Quantity";
 const colors = [
   {
     id: "values-light-blue",
-    value: "Light Blue",
+    value: "Blue",
     className: "bg-color-light-blue",
     checked: true,
     soldOut: true,
+    price: 8,
+    oldPrice: 12,
   },
   {
     id: "values-black",
@@ -19,6 +21,8 @@ const colors = [
     className: "bg-color-black",
     checked: false,
     soldOut: false,
+    price: 9,
+    oldPrice: 12,
   },
   {
     id: "values-white",
@@ -26,11 +30,23 @@ const colors = [
     className: "bg-color-white",
     checked: false,
     soldOut: false,
+    price: 10,
+    oldPrice: 12,
   },
 ];
-import Slider1ZoomOuter from "./sliders/Slider1ZoomOuter";
+
+import Slider1Notification from "./sliders/Slider1Notification";
 export default function Details23() {
   const [currentColor, setCurrentColor] = useState(colors[0]);
+  const [quantity, setQuantity] = useState(1);
+  const handleColor = (color) => {
+    const updatedColor = colors.filter(
+      (elm) => elm.value.toLowerCase() == color.toLowerCase()
+    )[0];
+    if (updatedColor) {
+      setCurrentColor(updatedColor);
+    }
+  };
   return (
     <section
       className="flat-spacing-4 pt_0"
@@ -42,7 +58,10 @@ export default function Details23() {
             <div className="col-md-6">
               <div className="tf-product-media-wrap sticky-top">
                 <div className="thumbs-slider">
-                  <Slider1ZoomOuter />
+                  <Slider1Notification
+                    handleColor={handleColor}
+                    currentColor={currentColor.value}
+                  />
                 </div>
               </div>
             </div>
@@ -57,7 +76,9 @@ export default function Details23() {
                     <div className="badges">Sold Out</div>
                   </div>
                   <div className="tf-product-info-price">
-                    <div className="price">$18.00</div>
+                    <div className="price">
+                      ${currentColor.price.toFixed(2)}
+                    </div>
                   </div>
                   <div className="tf-product-info-liveview">
                     <div className="liveview-count">20</div>
@@ -102,7 +123,7 @@ export default function Details23() {
                   </div>
                   <div className="tf-product-info-quantity">
                     <div className="quantity-title fw-6">Quantity</div>
-                    <Quantity />
+                    <Quantity setQuantity={setQuantity} />
                   </div>
                   <div className="tf-product-info-buy-button">
                     <form onSubmit={(e) => e.preventDefault()} className="">
@@ -111,7 +132,9 @@ export default function Details23() {
                         className="tf-btn btns-sold-out cursor-not-allowed btn-fill justify-content-center fw-6 fs-16 flex-grow-1 animate-hover-btn "
                       >
                         <span>Sold out -&nbsp;</span>
-                        <span className="tf-qty-price">$8.00</span>
+                        <span className="tf-qty-price">
+                          ${(currentColor.price * quantity).toFixed(2)}
+                        </span>
                       </a>
                       <a
                         href="#"

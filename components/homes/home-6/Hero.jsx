@@ -2,7 +2,7 @@
 
 import { sliderData } from "@/data/heroslides";
 import React from "react";
-import { Pagination } from "swiper/modules";
+import { EffectFade, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,7 +10,8 @@ export default function Hero() {
   return (
     <section className="tf-slideshow slideshow-effect slider-effect-fade position-relative">
       <Swiper
-        modules={[Pagination]}
+        modules={[Pagination, EffectFade]}
+        effect="fade"
         pagination={{ clickable: true, el: ".sph6" }}
         className="tf-sw-effect"
       >

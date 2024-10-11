@@ -1,6 +1,6 @@
 import Footer1 from "@/components/footers/Footer1";
 import Header2 from "@/components/headers/Header2";
-import DefaultShopDetails from "@/components/shopDetails/DefaultShopDetails";
+
 import Details4 from "@/components/shopDetails/Details4";
 import Products from "@/components/shopDetails/Products";
 import RecentProducts from "@/components/shopDetails/RecentProducts";

@@ -15,6 +15,7 @@ export default function Hero() {
         autoplay
         modules={[Pagination, Autoplay]}
         pagination={{ clickable: true, el: ".spd253" }}
+        className="tf-sw-slideshow"
         // autoplay={{ delay: 0, disableOnInteraction: false }} // data-auto-play
         // speed={1000} // data-speed
       >

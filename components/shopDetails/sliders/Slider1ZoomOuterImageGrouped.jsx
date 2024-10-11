@@ -8,6 +8,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 const images = [
   {
+    id: 1,
     src: "/images/shop/products/p-d1.png",
     alt: "",
     width: 770,
@@ -15,6 +16,7 @@ const images = [
     dataValue: "beige",
   },
   {
+    id: 2,
     src: "/images/shop/products/hmgoepprod.jpg",
     alt: "",
     width: 713,
@@ -22,6 +24,7 @@ const images = [
     dataValue: "beige",
   },
   {
+    id: 3,
     src: "/images/shop/products/hmgoepprod2.jpg",
     alt: "img-compare",
     width: 713,
@@ -29,6 +32,7 @@ const images = [
     dataValue: "beige",
   },
   {
+    id: 4,
     src: "/images/shop/products/hmgoepprod3.jpg",
     alt: "img-compare",
     width: 713,
@@ -36,6 +40,7 @@ const images = [
     dataValue: "beige",
   },
   {
+    id: 5,
     src: "/images/shop/products/hmgoepprod4.jpg",
     alt: "img-compare",
     width: 768,
@@ -43,6 +48,7 @@ const images = [
     dataValue: "beige",
   },
   {
+    id: 6,
     src: "/images/shop/products/hmgoepprod5.jpg",
     alt: "img-compare",
     width: 713,
@@ -50,6 +56,7 @@ const images = [
     dataValue: "beige",
   },
   {
+    id: 7,
     src: "/images/shop/products/hmgoepprod6.jpg",
     alt: "",
     width: 768,
@@ -57,6 +64,7 @@ const images = [
     dataValue: "black",
   },
   {
+    id: 8,
     src: "/images/shop/products/hmgoepprod7.jpg",
     alt: "",
     width: 713,
@@ -64,6 +72,7 @@ const images = [
     dataValue: "black",
   },
   {
+    id: 9,
     src: "/images/shop/products/hmgoepprod8.jpg",
     alt: "",
     width: 713,
@@ -71,6 +80,7 @@ const images = [
     dataValue: "black",
   },
   {
+    id: 10,
     src: "/images/shop/products/hmgoepprod9.jpg",
     alt: "",
     width: 768,
@@ -78,6 +88,7 @@ const images = [
     dataValue: "black",
   },
   {
+    id: 11,
     src: "/images/shop/products/hmgoepprod10.jpg",
     alt: "",
     width: 713,
@@ -85,6 +96,7 @@ const images = [
     dataValue: "blue",
   },
   {
+    id: 12,
     src: "/images/shop/products/hmgoepprod11.jpg",
     alt: "",
     width: 713,
@@ -92,6 +104,7 @@ const images = [
     dataValue: "blue",
   },
   {
+    id: 13,
     src: "/images/shop/products/hmgoepprod12.jpg",
     alt: "",
     width: 768,
@@ -99,6 +112,7 @@ const images = [
     dataValue: "blue",
   },
   {
+    id: 14,
     src: "/images/shop/products/hmgoepprod13.jpg",
     alt: "",
     width: 768,
@@ -106,6 +120,7 @@ const images = [
     dataValue: "blue",
   },
   {
+    id: 15,
     src: "/images/shop/products/hmgoepprod14.jpg",
     alt: "",
     width: 768,
@@ -113,6 +128,7 @@ const images = [
     dataValue: "white",
   },
   {
+    id: 16,
     src: "/images/shop/products/hmgoepprod15.jpg",
     alt: "",
     width: 768,
@@ -120,6 +136,7 @@ const images = [
     dataValue: "white",
   },
   {
+    id: 17,
     src: "/images/shop/products/hmgoepprod16.jpg",
     alt: "",
     width: 768,
@@ -127,6 +144,7 @@ const images = [
     dataValue: "white",
   },
   {
+    id: 18,
     src: "/images/shop/products/hmgoepprod17.jpg",
     alt: "",
     width: 768,
@@ -134,8 +152,10 @@ const images = [
     dataValue: "white",
   },
 ];
-
-export default function Slider1ZoomOuterImageGrouped({ currentColor }) {
+export default function Slider1ZoomOuterImageGrouped({
+  currentColor = "Beige",
+  handleColor = () => {},
+}) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   useEffect(() => {
     // Function to initialize Drift
@@ -194,6 +214,9 @@ export default function Slider1ZoomOuterImageGrouped({ currentColor }) {
         className="tf-product-media-thumbs other-image-zoom"
         onSwiper={setThumbsSwiper}
         modules={[Thumbs]}
+        onSlideChange={(swiper) => {
+          handleColor(images[swiper.activeIndex].dataValue);
+        }}
         breakpoints={{
           0: {
             direction: "horizontal",

@@ -32,7 +32,7 @@ export default function Hero() {
                 height={872}
               />
               <div className="box-content text-center">
-                <div className="container">
+                <div className="container ">
                   <h1
                     className={`fade-item fade-item-1 text-stroke-white heading font-caprasimo`}
                   >

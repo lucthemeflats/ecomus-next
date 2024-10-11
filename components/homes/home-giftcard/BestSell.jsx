@@ -8,13 +8,14 @@ import { Gallery, Item } from "react-photoswipe-gallery";
 import { productBestcell } from "@/data/products";
 import { useContextElement } from "@/context/Context";
 const priceOptions = [
-  { id: "values-1", price: "$268.00", checked: true },
-  { id: "values-2", price: "$333.00", checked: false },
-  { id: "values-3", price: "$564.00", checked: false },
-  { id: "values-4", price: "$633.00", checked: false },
+  { id: "values-1", price: 268.0, checked: true },
+  { id: "values-2", price: 333.0, checked: false },
+  { id: "values-3", price: 564.0, checked: false },
+  { id: "values-4", price: 633.0, checked: false },
 ];
 export default function BestSell() {
   const [currentPrice, setCurrentPrice] = useState(priceOptions[0]);
+  const [quantity, setQuantity] = useState(1);
   const {
     addProductToCart,
     isAddedToCartProducts,
@@ -83,7 +84,7 @@ export default function BestSell() {
                       </div>
                       <div className="tf-product-info-price">
                         <div className="price">
-                          ${productBestcell[0].price.toFixed(2)}
+                          ${currentPrice.price.toFixed(2)}
                         </div>
                       </div>
                       <div className="tf-product-info-liveview">
@@ -113,7 +114,7 @@ export default function BestSell() {
                           <div className="variant-picker-label">
                             Denominations:
                             <span className="fw-6 variant-picker-label-value">
-                              {currentPrice.price}
+                              ${currentPrice.price.toFixed(2)}
                             </span>
                           </div>
                           <form className="variant-picker-values">
@@ -129,10 +130,8 @@ export default function BestSell() {
                                 <label
                                   onClick={() => setCurrentPrice(color)}
                                   className="style-text"
-                                  htmlFor={color.id}
-                                  data-value={color.value}
                                 >
-                                  <p>{color.price}</p>
+                                  <p>${color.price.toFixed(2)}</p>
                                 </label>
                               </React.Fragment>
                             ))}
@@ -141,7 +140,7 @@ export default function BestSell() {
                       </div>
                       <div className="tf-product-info-quantity">
                         <div className="quantity-title fw-6">Quantity</div>
-                        <Quantity />
+                        <Quantity setQuantity={setQuantity} />
                       </div>
                       <div className="tf-product-info-buy-button">
                         <form onSubmit={(e) => e.preventDefault()} className="">
@@ -238,10 +237,10 @@ export default function BestSell() {
                             <span>
                               {isAddedToCartProducts(productBestcell[0].id)
                                 ? "Already Added"
-                                : "Add to cart -"}
+                                : "Add to cart -"}{" "}
                             </span>
                             <span className="tf-qty-price">
-                              ${productBestcell[0].price.toFixed(2)}
+                              ${(quantity * currentPrice.price).toFixed(2)}
                             </span>
                           </a>
                           <a

@@ -1,19 +1,30 @@
 "use client";
 import React, { useState } from "react";
-import Slider1 from "./sliders/Slider1";
+
 import Image from "next/image";
 import {
-  colors6,
+  colorOptions5,
   paymentImages,
   sizeOptions,
 } from "@/data/singleProductOptions";
 import StickyItem from "./StickyItem";
 import Quantity from "./Quantity";
-import DetailsOuterZoom from "./DetailsOuterZoom";
-import Slider1ZoomOuter from "./sliders/Slider1ZoomOuter";
+
+import Slider1RectangleColor from "./sliders/Slider1RectangleColor";
 export default function Details18() {
   const [currentSize, setCurrentSize] = useState(sizeOptions[0]);
-  const [currentColorOption, setCurrentColorOption] = useState(colors6[0]);
+  const [currentColorOption, setCurrentColorOption] = useState(
+    colorOptions5[0]
+  );
+  const [quantity, setQuantity] = useState(1);
+  const handleColor = (color) => {
+    const updatedColor = colorOptions5.filter(
+      (elm) => elm.value.toLowerCase() == color.toLowerCase()
+    )[0];
+    if (updatedColor) {
+      setCurrentColorOption(updatedColor);
+    }
+  };
   return (
     <section
       className="flat-spacing-4 pt_0"
@@ -25,7 +36,10 @@ export default function Details18() {
             <div className="col-md-6">
               <div className="tf-product-media-wrap sticky-top">
                 <div className="thumbs-slider">
-                  <Slider1ZoomOuter />
+                  <Slider1RectangleColor
+                    handleColor={handleColor}
+                    currentColor={currentColorOption.value}
+                  />
                 </div>
               </div>
             </div>
@@ -37,8 +51,14 @@ export default function Details18() {
                     <h5>Cotton jersey top</h5>
                   </div>
                   <div className="tf-product-info-price">
-                    <div className="price-on-sale">$8.00</div>
-                    <div className="compare-at-price">$10.00</div>
+                    <div className="price-on-sale">
+                      {" "}
+                      ${currentColorOption.price.toFixed(2)}
+                    </div>
+                    <div className="compare-at-price">
+                      {" "}
+                      ${currentColorOption.oldPrice.toFixed(2)}
+                    </div>
                     <div className="badges-on-sale">
                       <span>20</span>% OFF
                     </div>
@@ -52,7 +72,7 @@ export default function Details18() {
                       <div className="variant-picker-label">
                         Color:{" "}
                         <span className="fw-6 variant-picker-label-value">
-                          Beige
+                          {currentColorOption.value}
                         </span>
                       </div>
                       <div
@@ -61,12 +81,12 @@ export default function Details18() {
                       >
                         <div className="btn-select">
                           <span className="text-sort-value">
-                            {currentColorOption.text}
+                            {currentColorOption.value}
                           </span>
                           <span className="icon icon-arrow-down" />
                         </div>
                         <div className="dropdown-menu">
-                          {colors6.map((item, index) => (
+                          {colorOptions5.map((item, index) => (
                             <div
                               key={index}
                               className={`select-item ${
@@ -78,7 +98,7 @@ export default function Details18() {
                                 className={`box-color d-inline-block rounded-full ${item.colorClass}`}
                               />
                               <span className="text-value-item">
-                                {item.text}
+                                {item.value}
                               </span>
                             </div>
                           ))}
@@ -131,7 +151,7 @@ export default function Details18() {
                   </div>
                   <div className="tf-product-info-quantity">
                     <div className="quantity-title fw-6">Quantity</div>
-                    <Quantity />
+                    <Quantity setQuantity={setQuantity} />
                   </div>
                   <div className="tf-product-info-buy-button">
                     <form onSubmit={(e) => e.preventDefault()} className="">
@@ -140,7 +160,10 @@ export default function Details18() {
                         className="tf-btn btn-fill justify-content-center fw-6 fs-16 flex-grow-1 animate-hover-btn "
                       >
                         <span>Add to cart -&nbsp;</span>
-                        <span className="tf-qty-price">$8.00</span>
+                        <span className="tf-qty-price">
+                          {" "}
+                          ${(currentColorOption.price * quantity).toFixed(2)}
+                        </span>
                       </a>
                       <a
                         href="#"

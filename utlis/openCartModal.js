@@ -8,6 +8,7 @@ export const openCartModal = () => {
     }
   });
 
+  
   // Close any open offcanvas
   const offcanvasElements = document.querySelectorAll(".offcanvas.show");
   offcanvasElements.forEach((offcanvas) => {

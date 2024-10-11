@@ -77,19 +77,19 @@ export const slides3 = [
   {
     imgSrc: "/images/slider/fashion-slideshow-07.jpg",
     alt: "fashion-slideshow",
-    heading: "Urban Street Style",
+    heading: "Urban\n Street Style",
     subheading: "HOT COLLECTION",
   },
   {
     imgSrc: "/images/slider/fashion-slideshow-08.jpg",
     alt: "fashion-slideshow-02",
-    heading: "The weather Style",
+    heading: "The weather\n Style",
     subheading: "NEW COLLECTION",
   },
   {
     imgSrc: "/images/slider/fashion-slideshow-09.jpg",
     alt: "fashion-slideshow-03",
-    heading: "Mysterious Style",
+    heading: "Mysterious\n Style",
     subheading: "TREND COLLECTION",
   },
 ];
@@ -373,7 +373,7 @@ export const slides9 = [
     imgWidth: 2000,
     imgHeight: 837,
     text: "UP TO 40% OFF CHARGERS AND MORE.",
-    heading: "Savings for dads and grads.",
+    heading: "Savings for\n dads and grads.",
   },
   {
     imgSrc: "/images/slider/Slideshow_Electronics2.jpg",

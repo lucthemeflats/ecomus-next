@@ -21,7 +21,7 @@ export default function Hero() {
       >
         {slides6.map((slide, index) => (
           <SwiperSlide key={index}>
-            <div className="wrap-slider">
+            <div className={`wrap-slider ${index == 1 ? "row-end" : ""} `}>
               <Image
                 className="lazyload"
                 data-src={slide.imgSrc}

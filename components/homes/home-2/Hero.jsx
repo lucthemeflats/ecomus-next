@@ -29,6 +29,7 @@ export default function Hero() {
             slidesPerView: 1,
           },
         }}
+        className="tf-sw-slideshow"
       >
         {slidesData.map((slide, index) => (
           <SwiperSlide key={index}>

@@ -1,9 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export default function Quantity() {
+export default function Quantity({ setQuantity = (value) => {} }) {
   const [count, setCount] = useState(1);
+  useEffect(() => {
+    setQuantity(count);
+  }, [count]);
+
   return (
     <div className="wg-quantity">
       <span

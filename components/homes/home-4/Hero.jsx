@@ -17,6 +17,7 @@ export default function Hero() {
         speed={1000}
         modules={[Pagination]}
         pagination={{ clickable: true, el: ".spd120" }}
+        className="tf-sw-slideshow"
       >
         {slides3.map((slide, index) => (
           <SwiperSlide key={index}>
@@ -36,7 +37,7 @@ export default function Hero() {
                       {slide.subheading}
                     </p>
                     <h3 className="fade-item fade-item-2 text-white heading">
-                      {slide.heading.split(" ").map((line, idx) => (
+                      {slide.heading.split("\n").map((line, idx) => (
                         <React.Fragment key={idx}>
                           {line}
                           <br />

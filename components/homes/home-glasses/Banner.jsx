@@ -44,7 +44,7 @@ export default function Banner() {
                     />
                   </Link>
                   <div
-                    className="collection-content wow fadeInUp"
+                    className="collection-content wow fadeInUp banner-glass-content"
                     data-wow-delay="0s"
                   >
                     <h5 className="heading font-gloock fs-52 text-white">

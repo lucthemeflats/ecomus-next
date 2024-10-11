@@ -34,20 +34,22 @@ export default function NewsletterModal() {
   };
   const modalElement = useRef();
   useEffect(() => {
-    if (pathname == "/") {
-      const bootstrap = require("bootstrap"); // dynamically import bootstrap
-      var myModal = new bootstrap.Modal(
-        document.getElementById("newsletterPopup"),
-        {
-          keyboard: false,
-        }
-      );
+    setTimeout(() => {
+      if (pathname == "/") {
+        const bootstrap = require("bootstrap"); // dynamically import bootstrap
+        var myModal = new bootstrap.Modal(
+          document.getElementById("newsletterPopup"),
+          {
+            keyboard: false,
+          }
+        );
 
-      myModal.show();
-      modalElement.current.addEventListener("hidden.bs.modal", () => {
-        myModal.hide();
-      });
-    }
+        myModal.show();
+        modalElement.current.addEventListener("hidden.bs.modal", () => {
+          myModal.hide();
+        });
+      }
+    }, 2000);
   }, []);
   return (
     <div

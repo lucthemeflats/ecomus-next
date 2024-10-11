@@ -10,7 +10,7 @@ export default function Hero() {
     <div className="tf-slideshow slider-effect-fade position-relative">
       <Swiper
         className="swiper tf-sw-slideshow"
-        modules={{ Pagination }}
+        modules={[Pagination]}
         pagination={{ clickable: true, el: ".sp1" }}
         speed={1000}
       >

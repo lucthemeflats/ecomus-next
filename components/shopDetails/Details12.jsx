@@ -1,11 +1,61 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { paymentImages, priceOptions } from "@/data/singleProductOptions";
 import StickyItem from "./StickyItem";
 import Quantity from "./Quantity";
+import { Gallery, Item } from "react-photoswipe-gallery";
+import Drift from "drift-zoom";
 export default function Details12() {
   const [currentPriceOption, setCurrentPriceOption] = useState(priceOptions[0]);
+  const [quantity, setQuantity] = useState(1);
+  useEffect(() => {
+    // Function to initialize Drift
+    const imageZoom = () => {
+      const driftAll = document.querySelectorAll(".tf-image-zoom");
+      const pane = document.querySelector(".tf-zoom-main");
+
+      driftAll.forEach((el) => {
+        new Drift(el, {
+          zoomFactor: 2,
+          paneContainer: pane,
+          inlinePane: false,
+          handleTouch: false,
+          hoverBoundingBox: true,
+          containInline: true,
+        });
+      });
+    };
+    imageZoom();
+    const zoomElements = document.querySelectorAll(".tf-image-zoom");
+
+    const handleMouseOver = (event) => {
+      const parent = event.target.closest(".section-image-zoom");
+      if (parent) {
+        parent.classList.add("zoom-active");
+      }
+    };
+
+    const handleMouseLeave = (event) => {
+      const parent = event.target.closest(".section-image-zoom");
+      if (parent) {
+        parent.classList.remove("zoom-active");
+      }
+    };
+
+    zoomElements.forEach((element) => {
+      element.addEventListener("mouseover", handleMouseOver);
+      element.addEventListener("mouseleave", handleMouseLeave);
+    });
+
+    // Cleanup event listeners on component unmount
+    return () => {
+      zoomElements.forEach((element) => {
+        element.removeEventListener("mouseover", handleMouseOver);
+        element.removeEventListener("mouseleave", handleMouseLeave);
+      });
+    };
+  }, []);
   return (
     <section
       className="flat-spacing-4 pt_0"
@@ -17,23 +67,29 @@ export default function Details12() {
             <div className="col-md-6">
               <div className="tf-product-media-wrap sticky-top">
                 <div className="other-image-zoom" id="gallery-swiper-started">
-                  <a
-                    href="/images/shop/products/gift-card-1.png"
-                    target="_blank"
-                    className="item"
-                    data-pswp-width="770px"
-                    data-pswp-height="1075px"
-                  >
-                    <Image
-                      className="tf-image-zoom lazyload"
-                      data-zoom="/images/shop/products/gift-card-1.png"
-                      data-src="/images/shop/products/gift-card-1.png"
-                      alt=""
-                      src="/images/shop/products/gift-card-1.png"
-                      width={713}
-                      height={713}
-                    />
-                  </a>
+                  <Gallery>
+                    <Item
+                      width={770}
+                      height={1075}
+                      original="/images/shop/products/gift-card-1.png"
+                      thumbnail="/images/shop/products/gift-card-1.png"
+                    >
+                      {({ ref, open }) => (
+                        <a onClick={open}>
+                          <Image
+                            ref={ref}
+                            className="tf-image-zoom lazyload"
+                            data-zoom="/images/shop/products/gift-card-1.png"
+                            data-src="/images/shop/products/gift-card-1.png"
+                            alt=""
+                            src="/images/shop/products/gift-card-1.png"
+                            width={713}
+                            height={713}
+                          />
+                        </a>
+                      )}
+                    </Item>
+                  </Gallery>
                 </div>
               </div>
             </div>
@@ -84,7 +140,7 @@ export default function Details12() {
                   </div>
                   <div className="tf-product-info-quantity">
                     <div className="quantity-title fw-6">Quantity</div>
-                    <Quantity />
+                    <Quantity setQuantity={setQuantity} />
                   </div>
                   <div className="tf-product-info-buy-button">
                     <form onSubmit={(e) => e.preventDefault()} className="">
@@ -171,7 +227,9 @@ export default function Details12() {
                         className="tf-btn btn-fill justify-content-center fw-6 fs-16 flex-grow-1 animate-hover-btn "
                       >
                         <span>Add to cart -&nbsp;</span>
-                        <span className="tf-qty-price">$8.00</span>
+                        <span className="tf-qty-price">
+                          ${(25 * quantity).toFixed(2)}
+                        </span>
                       </a>
                       <a
                         href="#"

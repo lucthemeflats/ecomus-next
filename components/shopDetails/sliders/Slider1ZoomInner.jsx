@@ -1,149 +1,171 @@
 "use client";
 import Drift from "drift-zoom";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Gallery, Item } from "react-photoswipe-gallery";
 import { Navigation, Thumbs } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-const swiperSlidesThumbs = [
+const images = [
   {
-    imgSrc: "/images/shop/products/hmgoepprod31.jpg",
+    id: 1,
+    src: "/images/shop/products/p-d1.png",
+    alt: "",
+    width: 770,
+    height: 1075,
+    dataValue: "beige",
+  },
+  {
+    id: 2,
+    src: "/images/shop/products/hmgoepprod.jpg",
     alt: "",
     width: 713,
     height: 1070,
+    dataValue: "beige",
   },
   {
-    imgSrc: "/images/shop/products/hmgoepprod.jpg",
+    id: 3,
+    src: "/images/shop/products/hmgoepprod2.jpg",
     alt: "img-compare",
     width: 713,
     height: 1070,
+    dataValue: "beige",
   },
   {
-    imgSrc: "/images/shop/products/hmgoepprod2.jpg",
+    id: 4,
+    src: "/images/shop/products/hmgoepprod3.jpg",
     alt: "img-compare",
     width: 713,
     height: 1070,
+    dataValue: "beige",
   },
   {
-    imgSrc: "/images/shop/products/hmgoepprod3.jpg",
-    alt: "img-compare",
-    width: 713,
-    height: 1070,
-  },
-  {
-    imgSrc: "/images/shop/products/hmgoepprod4.jpg",
+    id: 5,
+    src: "/images/shop/products/hmgoepprod4.jpg",
     alt: "img-compare",
     width: 768,
     height: 1152,
+    dataValue: "beige",
   },
   {
-    imgSrc: "/images/shop/products/hmgoepprod5.jpg",
+    id: 6,
+    src: "/images/shop/products/hmgoepprod5.jpg",
     alt: "img-compare",
     width: 713,
     height: 1070,
+    dataValue: "beige",
   },
   {
-    imgSrc: "/images/shop/products/hmgoepprod6.jpg",
-    alt: "img-compare",
+    id: 7,
+    src: "/images/shop/products/hmgoepprod6.jpg",
+    alt: "",
     width: 768,
     height: 1152,
+    dataValue: "black",
   },
   {
-    imgSrc: "/images/shop/products/hmgoepprod7.jpg",
-    alt: "img-compare",
+    id: 8,
+    src: "/images/shop/products/hmgoepprod7.jpg",
+    alt: "",
     width: 713,
     height: 1070,
+    dataValue: "black",
   },
   {
-    imgSrc: "/images/shop/products/hmgoepprod8.jpg",
-    alt: "img-compare",
+    id: 9,
+    src: "/images/shop/products/hmgoepprod8.jpg",
+    alt: "",
     width: 713,
     height: 1070,
+    dataValue: "black",
   },
   {
-    imgSrc: "/images/shop/products/hmgoepprod9.jpg",
-    alt: "img-compare",
+    id: 10,
+    src: "/images/shop/products/hmgoepprod9.jpg",
+    alt: "",
     width: 768,
     height: 1152,
+    dataValue: "black",
+  },
+  {
+    id: 11,
+    src: "/images/shop/products/hmgoepprod10.jpg",
+    alt: "",
+    width: 713,
+    height: 1070,
+    dataValue: "blue",
+  },
+  {
+    id: 12,
+    src: "/images/shop/products/hmgoepprod11.jpg",
+    alt: "",
+    width: 713,
+    height: 1070,
+    dataValue: "blue",
+  },
+  {
+    id: 13,
+    src: "/images/shop/products/hmgoepprod12.jpg",
+    alt: "",
+    width: 768,
+    height: 1152,
+    dataValue: "blue",
+  },
+  {
+    id: 14,
+    src: "/images/shop/products/hmgoepprod13.jpg",
+    alt: "",
+    width: 768,
+    height: 1152,
+    dataValue: "blue",
+  },
+  {
+    id: 15,
+    src: "/images/shop/products/hmgoepprod14.jpg",
+    alt: "",
+    width: 768,
+    height: 1152,
+    dataValue: "white",
+  },
+  {
+    id: 16,
+    src: "/images/shop/products/hmgoepprod15.jpg",
+    alt: "",
+    width: 768,
+    height: 1152,
+    dataValue: "white",
+  },
+  {
+    id: 17,
+    src: "/images/shop/products/hmgoepprod16.jpg",
+    alt: "",
+    width: 768,
+    height: 1152,
+    dataValue: "white",
+  },
+  {
+    id: 18,
+    src: "/images/shop/products/hmgoepprod17.jpg",
+    alt: "",
+    width: 768,
+    height: 1152,
+    dataValue: "white",
   },
 ];
 
-const swiperSlides = [
-  {
-    imgSrc: "/images/shop/products/hmgoepprod31.jpg",
-    href: "/images/shop/products/p-d1.png",
-    width: 770,
-    height: 1075,
-    dataZoom: "/images/shop/products/hmgoepprod31.jpg",
-  },
-  {
-    imgSrc: "/images/shop/products/hmgoepprod.jpg",
-    href: "/images/shop/products/hmgoepprod.jpg",
-    width: 713,
-    height: 1070,
-    dataZoom: "/images/shop/products/hmgoepprod.jpg",
-  },
-  {
-    imgSrc: "/images/shop/products/hmgoepprod2.jpg",
-    href: "/images/shop/products/hmgoepprod2.jpg",
-    width: 713,
-    height: 1070,
-    dataZoom: "/images/shop/products/hmgoepprod2.jpg",
-  },
-  {
-    imgSrc: "/images/shop/products/hmgoepprod3.jpg",
-    href: "/images/shop/products/hmgoepprod3.jpg",
-    width: 713,
-    height: 1070,
-    dataZoom: "/images/shop/products/hmgoepprod3.jpg",
-  },
-  {
-    imgSrc: "/images/shop/products/hmgoepprod4.jpg",
-    href: "/images/shop/products/hmgoepprod4.jpg",
-    width: 768,
-    height: 1152,
-    dataZoom: "/images/shop/products/hmgoepprod4.jpg",
-  },
-  {
-    imgSrc: "/images/shop/products/hmgoepprod5.jpg",
-    href: "/images/shop/products/hmgoepprod5.jpg",
-    width: 713,
-    height: 1070,
-    dataZoom: "/images/shop/products/hmgoepprod5.jpg",
-  },
-  {
-    imgSrc: "/images/shop/products/hmgoepprod6.jpg",
-    href: "/images/shop/products/hmgoepprod6.jpg",
-    width: 768,
-    height: 1152,
-    dataZoom: "/images/shop/products/hmgoepprod6.jpg",
-  },
-  {
-    imgSrc: "/images/shop/products/hmgoepprod7.jpg",
-    href: "/images/shop/products/hmgoepprod7.jpg",
-    width: 713,
-    height: 1070,
-    dataZoom: "/images/shop/products/hmgoepprod7.jpg",
-  },
-  {
-    imgSrc: "/images/shop/products/hmgoepprod8.jpg",
-    href: "/images/shop/products/hmgoepprod8.jpg",
-    width: 713,
-    height: 1070,
-    dataZoom: "/images/shop/products/hmgoepprod8.jpg",
-  },
-  {
-    imgSrc: "/images/shop/products/hmgoepprod9.jpg",
-    href: "/images/shop/products/hmgoepprod9.jpg",
-    width: 768,
-    height: 1152,
-    dataZoom: "/images/shop/products/hmgoepprod9.jpg",
-  },
-];
-
-export default function Slider1ZoomInner() {
+export default function Slider1ZoomInner({
+  currentColor = "Beige",
+  handleColor = () => {},
+}) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const swiperRef = useRef(null);
+  useEffect(() => {
+    const slideIndex =
+      images.filter(
+        (elm) => elm.dataValue.toLowerCase() == currentColor.toLowerCase()
+      )[0].id - 1;
+    swiperRef.current.slideTo(slideIndex);
+  }, [currentColor]);
   useEffect(() => {
     // Function to initialize Drift
     const imageZoom = () => {
@@ -187,14 +209,14 @@ export default function Slider1ZoomInner() {
           },
         }}
       >
-        {swiperSlidesThumbs.map((slide, index) => (
+        {images.map((slide, index) => (
           <SwiperSlide key={index} className="stagger-item">
             <div className="item">
               <Image
                 className="lazyload"
-                data-src={slide.imgSrc}
-                alt={slide.alt}
-                src={slide.imgSrc} // Optional fallback for non-lazy loading
+                data-src={slide.src}
+                alt={""}
+                src={slide.src} // Optional fallback for non-lazy loading
                 width={slide.width}
                 height={slide.height}
               />
@@ -214,12 +236,16 @@ export default function Slider1ZoomInner() {
           id="gallery-swiper-started"
           thumbs={{ swiper: thumbsSwiper }}
           modules={[Thumbs, Navigation]}
+          onSwiper={(swiper) => (swiperRef.current = swiper)}
+          onSlideChange={(swiper) => {
+            handleColor(images[swiper.activeIndex].dataValue);
+          }}
         >
-          {swiperSlides.map((slide, index) => (
+          {images.map((slide, index) => (
             <SwiperSlide key={index}>
               <Item
-                original={slide.imgSrc}
-                thumbnail={slide.imgSrc}
+                original={slide.src}
+                thumbnail={slide.src}
                 width={slide.width}
                 height={slide.height}
               >
@@ -232,13 +258,13 @@ export default function Slider1ZoomInner() {
                   >
                     <Image
                       className="tf-image-zoom-inner lazyload"
-                      data-zoom={slide.dataZoom}
-                      data-src={slide.imgSrc}
+                      data-zoom={slide.src}
+                      data-src={slide.src}
                       ref={ref}
                       alt=""
                       width={slide.width}
                       height={slide.height}
-                      src={slide.imgSrc} // Optional fallback for non-lazy loading
+                      src={slide.src} // Optional fallback for non-lazy loading
                     />
                   </a>
                 )}

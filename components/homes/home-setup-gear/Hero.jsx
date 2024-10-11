@@ -9,7 +9,7 @@ export default function Hero() {
   return (
     <div className="tf-slideshow slider-home-2 slider-effect-fade position-relative">
       <Swiper
-        className="swiper tf-sw-slideshow"
+        className="swiper tf-sw-slideshow slider-setup-gear"
         slidesPerView={1}
         spaceBetween={0}
         centeredSlides={false}

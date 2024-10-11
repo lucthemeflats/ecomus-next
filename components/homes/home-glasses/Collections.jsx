@@ -56,7 +56,7 @@ export default function Collections() {
                       />
                     </Link>
                   </div>
-                  <div className="content">
+                  <div className="content banner-glass-content">
                     <div className="title">
                       <Link href={`/shop-default`} className="link font-gloock">
                         {slide.title}

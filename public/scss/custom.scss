@@ -121,3 +121,73 @@
 .icon-compare.added::before {
   content: "\e911"; /* Unicode for bin/trash symbol */
 }
+.preload.preload-container {
+  transition: 0.6s;
+  opacity: 1;
+  visibility: visible;
+}
+.preload.preload-container.disabled {
+  opacity: 0 !important;
+  visibility: hidden;
+}
+#toggle-rtl {
+  span {
+    &:nth-child(1) {
+      display: none;
+    }
+  }
+}
+html[dir="rtl"] {
+  #toggle-rtl {
+    span {
+      &:nth-child(1) {
+        display: block;
+      }
+      &:nth-child(2) {
+        display: none;
+      }
+    }
+  }
+  .testimonial-hover-skincare {
+    left: 0;
+  }
+  .tf-btn {
+    .icon-arrow-right:before {
+      content: "\e905";
+    }
+    .icon-arrow-left:before {
+      content: "\e906";
+    }
+  }
+
+  .banner-furnicher {
+    text-align: start !important;
+  }
+  .banner-glass-content {
+    text-align: start !important;
+  }
+  @media (min-width: 768px) {
+    .text-md-start {
+      text-align: start !important;
+    }
+  }
+  .tf-product-des-demo ul li {
+    padding-right: 16px !important;
+  }
+  .tf-product-des-demo ul li::before {
+    right: 0;
+  }
+  .box-nav-ul .menu-list li {
+    text-align: start;
+  }
+}
+.sidebar-mobile-open {
+  display: block !important;
+}
+.item-link.activeMenu::before {
+  width: 100% !important;
+}
+.item-link.activeMenu::before {
+  width: 100% !important;
+  background-color: var(--primary) !important;
+}

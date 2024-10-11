@@ -2,18 +2,27 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import {
-  colorOptions4,
+  colorOptions5,
   paymentImages,
   sizeOptions,
 } from "@/data/singleProductOptions";
 import StickyItem from "./StickyItem";
-import Slider1 from "./sliders/Slider1";
+
 import Quantity from "./Quantity";
-import DetailsOuterZoom from "./DetailsOuterZoom";
-import Slider1ZoomOuter from "./sliders/Slider1ZoomOuter";
+
+import Slider1RectangleColor from "./sliders/Slider1RectangleColor";
 export default function Details15() {
-  const [currentColor, setCurrentColor] = useState(colorOptions4[0]);
+  const [currentColor, setCurrentColor] = useState(colorOptions5[0]);
   const [currentSize, setCurrentSize] = useState(sizeOptions[0]);
+  const [quantity, setQuantity] = useState(1);
+  const handleColor = (color) => {
+    const updatedColor = colorOptions5.filter(
+      (elm) => elm.value.toLowerCase() == color.toLowerCase()
+    )[0];
+    if (updatedColor) {
+      setCurrentColor(updatedColor);
+    }
+  };
   return (
     <section
       className="flat-spacing-4 pt_0"
@@ -25,7 +34,10 @@ export default function Details15() {
             <div className="col-md-6">
               <div className="tf-product-media-wrap sticky-top">
                 <div className="thumbs-slider">
-                  <Slider1ZoomOuter />
+                  <Slider1RectangleColor
+                    handleColor={handleColor}
+                    currentColor={currentColor.value}
+                  />
                 </div>
               </div>
             </div>
@@ -37,8 +49,12 @@ export default function Details15() {
                     <h5>Cotton jersey top</h5>
                   </div>
                   <div className="tf-product-info-price">
-                    <div className="price-on-sale">$8.00</div>
-                    <div className="compare-at-price">$10.00</div>
+                    <div className="price-on-sale">
+                      ${currentColor.price.toFixed(2)}
+                    </div>
+                    <div className="compare-at-price">
+                      ${currentColor.oldPrice.toFixed(2)}
+                    </div>
                     <div className="badges-on-sale">
                       <span>20</span>% OFF
                     </div>
@@ -56,7 +72,7 @@ export default function Details15() {
                         </span>
                       </div>
                       <form className="variant-picker-values">
-                        {colorOptions4.map((option) => (
+                        {colorOptions5.map((option) => (
                           <React.Fragment key={option.id}>
                             <input
                               type="radio"
@@ -67,7 +83,7 @@ export default function Details15() {
                             />
                             <label
                               onClick={() => setCurrentColor(option)}
-                              className="style-text rectangle-color"
+                              className="style-text rectangle-color color-btn"
                               htmlFor={option.id}
                               data-value={option.value}
                             >
@@ -121,7 +137,7 @@ export default function Details15() {
                   </div>
                   <div className="tf-product-info-quantity">
                     <div className="quantity-title fw-6">Quantity</div>
-                    <Quantity />
+                    <Quantity setQuantity={setQuantity} />
                   </div>
                   <div className="tf-product-info-buy-button">
                     <form onSubmit={(e) => e.preventDefault()} className="">
@@ -130,7 +146,9 @@ export default function Details15() {
                         className="tf-btn btn-fill justify-content-center fw-6 fs-16 flex-grow-1 animate-hover-btn "
                       >
                         <span>Add to cart -&nbsp;</span>
-                        <span className="tf-qty-price">$8.00</span>
+                        <span className="tf-qty-price">
+                          ${(currentColor.price * quantity).toFixed(2)}
+                        </span>
                       </a>
                       <a
                         href="#"

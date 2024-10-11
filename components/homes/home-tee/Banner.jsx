@@ -12,7 +12,7 @@ export default function Banner() {
         <div className="container">
           <Link
             href={`/shop-collection-sub`}
-            className="card-box text-md-start text-center rounded-0"
+            className="card-box text-md-start text-center rounded-0 banner-glass-content"
           >
             <h3 className="heading font-caprasimo">Big Sur Collection</h3>
             <p className="text">

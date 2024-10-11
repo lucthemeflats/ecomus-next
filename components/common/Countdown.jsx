@@ -45,7 +45,7 @@ const renderer2 = ({ days, hours, minutes, seconds, completed }) => {
 export default function CountdownComponent({
   fullLabel = false,
   labels,
-  targetDate,
+  targetDate = '2025-6-07',
 }) {
   const [showCountdown, setShowCountdown] = useState(false);
   useEffect(() => {

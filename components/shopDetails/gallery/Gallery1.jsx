@@ -2,21 +2,21 @@
 import Drift from "drift-zoom";
 const productImages = [
   {
-    id: "image-color-brown",
+    id: "values-brown",
 
     src: "/images/shop/products/p-d3.png",
     width: 713,
     height: 995,
   },
   {
-    id: "image-color-light-purple",
+    id: "values-light-purple",
 
     src: "/images/shop/products/p-d3-1.jpg",
     width: 768,
     height: 1072,
   },
   {
-    id: "image-color-light-green",
+    id: "values-light-green",
 
     src: "/images/shop/products/p-d3-2.jpg",
     width: 713,
@@ -91,8 +91,7 @@ export default function Gallery1() {
             {({ ref, open }) => (
               <a className="item" onClick={open}>
                 <Image
-                  className="radius-10 tf-image-zoom lazyload"
-                  id={image.id}
+                  className={`radius-10 tf-image-zoom lazyload ${image.id}`}
                   data-zoom={image.src}
                   ref={ref}
                   alt=""

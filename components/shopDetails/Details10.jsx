@@ -14,6 +14,15 @@ import Slider1ZoomOuter from "./sliders/Slider1ZoomOuter";
 export default function Details10() {
   const [currentColor, setCurrentColor] = useState(colors[0]);
   const [currentSize, setCurrentSize] = useState(sizeOptions[0]);
+  const [quantity, setQuantity] = useState(1);
+  const handleColor = (color) => {
+    const updatedColor = colors.filter(
+      (elm) => elm.value.toLowerCase() == color.toLowerCase()
+    )[0];
+    if (updatedColor) {
+      setCurrentColor(updatedColor);
+    }
+  };
   return (
     <section
       className="flat-spacing-4 pt_0"
@@ -25,7 +34,10 @@ export default function Details10() {
             <div className="col-md-6">
               <div className="tf-product-media-wrap sticky-top">
                 <div className="thumbs-slider">
-                  <Slider1ZoomOuter />
+                  <Slider1ZoomOuter
+                    handleColor={handleColor}
+                    currentColor={currentColor.value}
+                  />
                 </div>
               </div>
             </div>
@@ -37,7 +49,9 @@ export default function Details10() {
                     <h5>Cotton jersey top</h5>
                   </div>
                   <div className="tf-product-info-price">
-                    <div className="price">$18.00</div>
+                    <div className="price">
+                      ${currentColor.price.toFixed(2)}
+                    </div>
                   </div>
                   <div className="tf-product-info-liveview">
                     <div className="liveview-count">20</div>
@@ -145,7 +159,7 @@ export default function Details10() {
                   </div>
                   <div className="tf-product-info-quantity">
                     <div className="quantity-title fw-6">Quantity</div>
-                    <Quantity />
+                    <Quantity setQuantity={setQuantity} />
                   </div>
                   <div className="tf-product-info-buy-button">
                     <form onSubmit={(e) => e.preventDefault()} className="">
@@ -154,7 +168,9 @@ export default function Details10() {
                         className="tf-btn btn-fill justify-content-center fw-6 fs-16 flex-grow-1 animate-hover-btn "
                       >
                         <span>Add to cart -&nbsp;</span>
-                        <span className="tf-qty-price">$8.00</span>
+                        <span className="tf-qty-price">
+                          ${(currentColor.price * quantity).toFixed(2)}
+                        </span>
                       </a>
                       <a
                         href="#"
