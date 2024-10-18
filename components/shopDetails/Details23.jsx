@@ -36,7 +36,8 @@ const colors = [
 ];
 
 import Slider1Notification from "./sliders/Slider1Notification";
-export default function Details23() {
+import { useContextElement } from "@/context/Context";
+export default function Details23({ product }) {
   const [currentColor, setCurrentColor] = useState(colors[0]);
   const [quantity, setQuantity] = useState(1);
   const handleColor = (color) => {
@@ -47,6 +48,12 @@ export default function Details23() {
       setCurrentColor(updatedColor);
     }
   };
+  const {
+    addToCompareItem,
+    isAddedtoCompareItem,
+    addToWishlist,
+    isAddedtoWishlist,
+  } = useContextElement();
   return (
     <section
       className="flat-spacing-4 pt_0"
@@ -61,6 +68,7 @@ export default function Details23() {
                   <Slider1Notification
                     handleColor={handleColor}
                     currentColor={currentColor.value}
+                    firstImage={product.imgSrc}
                   />
                 </div>
               </div>
@@ -70,15 +78,15 @@ export default function Details23() {
                 <div className="tf-zoom-main" />
                 <div className="tf-product-info-list other-image-zoom">
                   <div className="tf-product-info-title">
-                    <h5>Cotton jersey top</h5>
+                    <h5>
+                      {product.title ? product.title : "Cotton jersey top"}
+                    </h5>
                   </div>
                   <div className="tf-product-info-badges">
                     <div className="badges">Sold Out</div>
                   </div>
                   <div className="tf-product-info-price">
-                    <div className="price">
-                      ${currentColor.price.toFixed(2)}
-                    </div>
+                    <div className="price">${product.price.toFixed(2)}</div>
                   </div>
                   <div className="tf-product-info-liveview">
                     <div className="liveview-count">20</div>
@@ -127,31 +135,46 @@ export default function Details23() {
                   </div>
                   <div className="tf-product-info-buy-button">
                     <form onSubmit={(e) => e.preventDefault()} className="">
-                      <a
-                        href="#"
-                        className="tf-btn btns-sold-out cursor-not-allowed btn-fill justify-content-center fw-6 fs-16 flex-grow-1 animate-hover-btn "
-                      >
+                      <a className="tf-btn btns-sold-out cursor-not-allowed btn-fill justify-content-center fw-6 fs-16 flex-grow-1 animate-hover-btn ">
                         <span>Sold out -&nbsp;</span>
                         <span className="tf-qty-price">
-                          ${(currentColor.price * quantity).toFixed(2)}
+                          ${(product.price * quantity).toFixed(2)}
                         </span>
                       </a>
                       <a
-                        href="#"
+                        onClick={() => addToWishlist(product.id)}
                         className="tf-product-btn-wishlist hover-tooltip box-icon bg_white wishlist btn-icon-action"
                       >
-                        <span className="icon icon-heart" />
-                        <span className="tooltip">Add to Wishlist</span>
+                        <span
+                          className={`icon icon-heart ${
+                            isAddedtoWishlist(product.id) ? "added" : ""
+                          }`}
+                        />
+                        <span className="tooltip">
+                          {" "}
+                          {isAddedtoWishlist(product.id)
+                            ? "Already Wishlisted"
+                            : "Add to Wishlist"}
+                        </span>
                         <span className="icon icon-delete" />
                       </a>
                       <a
                         href="#compare"
                         data-bs-toggle="offcanvas"
+                        onClick={() => addToCompareItem(product.id)}
                         aria-controls="offcanvasLeft"
                         className="tf-product-btn-wishlist hover-tooltip box-icon bg_white compare btn-icon-action"
                       >
-                        <span className="icon icon-compare" />
-                        <span className="tooltip">Add to Compare</span>
+                        <span
+                          className={`icon icon-compare ${
+                            isAddedtoCompareItem(product.id) ? "added" : ""
+                          }`}
+                        />
+                        <span className="tooltip">
+                          {isAddedtoCompareItem(product.id)
+                            ? "Already Compared"
+                            : "Add to Compare"}
+                        </span>
                         <span className="icon icon-check" />
                       </a>
                       <div className="w-100">

@@ -1,33 +1,34 @@
 "use client";
 import Drift from "drift-zoom";
-const productImages = [
-  {
-    id: "values-brown",
 
-    src: "/images/shop/products/p-d3.png",
-    width: 713,
-    height: 995,
-  },
-  {
-    id: "values-light-purple",
-
-    src: "/images/shop/products/p-d3-1.jpg",
-    width: 768,
-    height: 1072,
-  },
-  {
-    id: "values-light-green",
-
-    src: "/images/shop/products/p-d3-2.jpg",
-    width: 713,
-    height: 995,
-  },
-];
 import Image from "next/image";
 import { useEffect } from "react";
 import { Gallery, Item } from "react-photoswipe-gallery";
 
-export default function Gallery1() {
+export default function Gallery1({ firstImage }) {
+  const productImages = [
+    {
+      id: "values-brown",
+
+      src: firstImage || "/images/shop/products/p-d3.png",
+      width: 713,
+      height: 995,
+    },
+    {
+      id: "values-light-purple",
+
+      src: "/images/shop/products/p-d3-1.jpg",
+      width: 768,
+      height: 1072,
+    },
+    {
+      id: "values-light-green",
+
+      src: "/images/shop/products/p-d3-2.jpg",
+      width: 713,
+      height: 995,
+    },
+  ];
   useEffect(() => {
     // Function to initialize Drift
     const imageZoom = () => {

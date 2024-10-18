@@ -55,6 +55,7 @@ export default function DetailsOuterZoom({ product = allProducts[0] }) {
                   <Slider1ZoomOuter
                     handleColor={handleColor}
                     currentColor={currentColor.value}
+                    firstImage={product.imgSrc}
                   />
                 </div>
               </div>
@@ -79,7 +80,7 @@ export default function DetailsOuterZoom({ product = allProducts[0] }) {
                   </div>
                   <div className="tf-product-info-price">
                     <div className="price-on-sale">
-                      ${currentColor.price.toFixed(2)}
+                      ${product.price.toFixed(2)}
                     </div>
 
                     <div className="compare-at-price">
@@ -102,10 +103,7 @@ export default function DetailsOuterZoom({ product = allProducts[0] }) {
                       </div>
                       <div className="tf-countdown style-1">
                         <div className="js-countdown">
-                          <CountdownComponent
-                            targetDate="2025-08-07"
-                            labels="Days :,Hours :,Mins :,Secs"
-                          />
+                          <CountdownComponent labels="Days :,Hours :,Mins :,Secs" />
                         </div>
                       </div>
                     </div>
@@ -191,7 +189,7 @@ export default function DetailsOuterZoom({ product = allProducts[0] }) {
                       <a
                         onClick={() => {
                           openCartModal();
-                          addProductToCart(product.id);
+                          addProductToCart(product.id, quantity ? quantity : 1);
                         }}
                         className="tf-btn btn-fill justify-content-center fw-6 fs-16 flex-grow-1 animate-hover-btn"
                       >
@@ -202,7 +200,7 @@ export default function DetailsOuterZoom({ product = allProducts[0] }) {
                           -{" "}
                         </span>
                         <span className="tf-qty-price">
-                          ${(currentColor.price * quantity).toFixed(2)}
+                          ${(product.price * quantity).toFixed(2)}
                         </span>
                       </a>
                       <a

@@ -191,3 +191,12 @@ html[dir="rtl"] {
   width: 100% !important;
   background-color: var(--primary) !important;
 }
+.pswp__img {
+  // height: fit-content !important;
+  object-fit: contain !important;
+}
+.pswp img {
+  object-fit: contain !important;
+  height: 100%;
+  width: 100%;
+}

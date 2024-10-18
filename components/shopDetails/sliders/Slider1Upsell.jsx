@@ -6,33 +6,34 @@ import { Gallery, Item } from "react-photoswipe-gallery";
 import { Navigation, Thumbs } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-const images = [
-  {
-    id: 1,
-    src: "/images/shop/products/p-d3.png",
-    width: 713,
-    height: 995,
-    dataValue: "Brown",
-  },
-  {
-    id: 2,
-    src: "/images/shop/products/p-d3-1.jpg",
-    width: 768,
-    height: 1072,
-    dataValue: "Purple",
-  },
-  {
-    id: 3,
-    src: "/images/shop/products/p-d3-2.jpg",
-    width: 713,
-    height: 995,
-    dataValue: "Light Green",
-  },
-];
 export default function Slider1Upsell({
   currentColor = "Brown",
   handleColor = () => {},
+  firstImage,
 }) {
+  const images = [
+    {
+      id: 1,
+      src: firstImage || "/images/shop/products/p-d3.png",
+      width: 713,
+      height: 995,
+      dataValue: "Brown",
+    },
+    {
+      id: 2,
+      src: "/images/shop/products/p-d3-1.jpg",
+      width: 768,
+      height: 1072,
+      dataValue: "Purple",
+    },
+    {
+      id: 3,
+      src: "/images/shop/products/p-d3-2.jpg",
+      width: 713,
+      height: 995,
+      dataValue: "Light Green",
+    },
+  ];
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const swiperRef = useRef(null);
   useEffect(() => {

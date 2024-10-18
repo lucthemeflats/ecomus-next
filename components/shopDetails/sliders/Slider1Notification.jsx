@@ -6,37 +6,37 @@ import { Gallery, Item } from "react-photoswipe-gallery";
 import { Navigation, Thumbs } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-const images = [
-  {
-    id: 1,
-    dataValue: "blue",
-    alt: "",
-    src: "images/products/light-blue-2.jpg",
-    width: 720,
-    height: 1005,
-  },
-  {
-    id: 2,
-    dataValue: "black",
-    alt: "",
-    src: "images/products/black-14.jpg",
-    width: 720,
-    height: 1005,
-  },
-  {
-    id: 3,
-    dataValue: "white",
-    alt: "",
-    src: "images/products/white-10.jpg",
-    width: 720,
-    height: 1005,
-  },
-];
-
 export default function Slider1Notification({
   currentColor = "blue",
   handleColor = () => {},
+  firstImage,
 }) {
+  const images = [
+    {
+      id: 1,
+      dataValue: "blue",
+      alt: "",
+      src: firstImage || "/images/products/light-blue-2.jpg",
+      width: 720,
+      height: 1005,
+    },
+    {
+      id: 2,
+      dataValue: "black",
+      alt: "",
+      src: "/images/products/black-14.jpg",
+      width: 720,
+      height: 1005,
+    },
+    {
+      id: 3,
+      dataValue: "white",
+      alt: "",
+      src: "/images/products/white-10.jpg",
+      width: 720,
+      height: 1005,
+    },
+  ];
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const swiperRef = useRef(null);
   useEffect(() => {

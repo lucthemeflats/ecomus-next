@@ -1,40 +1,41 @@
 "use client";
 import Drift from "drift-zoom";
-const productImages = [
-  {
-    id: "image-color-brown",
 
-    src: "/images/shop/products/hmgoepprod.jpg",
-    width: 713,
-    height: 1070,
-  },
-  {
-    id: "image-color-light-purple",
-
-    src: "/images/shop/products/hmgoepprod2.jpg",
-    width: 713,
-    height: 1070,
-  },
-  {
-    id: "image-color-light-green",
-
-    src: "/images/shop/products/hmgoepprod3.jpg",
-    width: 713,
-    height: 1070,
-  },
-  {
-    id: "image-color-light-green",
-
-    src: "/images/shop/products/hmgoepprod4.jpg",
-    width: 768,
-    height: 1152,
-  },
-];
 import Image from "next/image";
 import { useEffect } from "react";
 import { Gallery, Item } from "react-photoswipe-gallery";
 
-export default function Gallery2() {
+export default function Gallery2({ firstImage }) {
+  const productImages = [
+    {
+      id: "image-color-brown",
+
+      src: firstImage || "/images/shop/products/hmgoepprod.jpg",
+      width: 713,
+      height: 1070,
+    },
+    {
+      id: "image-color-light-purple",
+
+      src: "/images/shop/products/hmgoepprod2.jpg",
+      width: 713,
+      height: 1070,
+    },
+    {
+      id: "image-color-light-green",
+
+      src: "/images/shop/products/hmgoepprod3.jpg",
+      width: 713,
+      height: 1070,
+    },
+    {
+      id: "image-color-light-green",
+
+      src: "/images/shop/products/hmgoepprod4.jpg",
+      width: 768,
+      height: 1152,
+    },
+  ];
   useEffect(() => {
     // Function to initialize Drift
     const imageZoom = () => {

@@ -46,7 +46,6 @@ export default function ScrollTop() {
         <path
           d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
           style={{
-            transition: "stroke-dashoffset 10ms linear",
             strokeDasharray: "307.919, 307.919",
             strokeDashoffset: 307.919 - (scrolled / scrollHeight) * 307.919,
           }}

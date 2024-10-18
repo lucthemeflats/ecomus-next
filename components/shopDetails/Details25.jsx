@@ -1,14 +1,25 @@
 "use client";
 import React, { useState } from "react";
 import Slider6 from "./sliders/Slider6";
+import { openCartModal } from "@/utlis/openCartModal";
 import Image from "next/image";
 import Link from "next/link";
 import { paymentImages } from "@/data/singleProductOptions";
 import StickyItem from "./StickyItem";
 import { bundleproducts } from "@/data/products";
 import Quantity from "./Quantity";
-export default function Details25() {
+import { useContextElement } from "@/context/Context";
+export default function Details25({ product }) {
   const [quantity, setQuantity] = useState(1);
+
+  const {
+    addProductToCart,
+    isAddedToCartProducts,
+    addToCompareItem,
+    isAddedtoCompareItem,
+    addToWishlist,
+    isAddedtoWishlist,
+  } = useContextElement();
   return (
     <section
       className="flat-spacing-4 pt_0"
@@ -20,7 +31,7 @@ export default function Details25() {
             <div className="col-md-6">
               <div className="tf-product-media-wrap sticky-top">
                 <div className="thumbs-slider">
-                  <Slider6 />
+                  <Slider6 firstImage={product.imgSrc} />
                 </div>
               </div>
             </div>
@@ -29,10 +40,12 @@ export default function Details25() {
                 <div className="tf-zoom-main" />
                 <div className="tf-product-info-list other-image-zoom">
                   <div className="tf-product-info-title">
-                    <h5>Cotton jersey top</h5>
+                    <h5>
+                      {product.title ? product.title : "Cotton jersey top"}
+                    </h5>
                   </div>
                   <div className="tf-product-info-price">
-                    <div className="price">$38.00</div>
+                    <div className="price">${product.price.toFixed(2)}</div>
                   </div>
                   <div className="tf-product-info-liveview">
                     <div className="liveview-count">20</div>
@@ -45,30 +58,57 @@ export default function Details25() {
                   <div className="tf-product-info-buy-button">
                     <form onSubmit={(e) => e.preventDefault()} className="">
                       <a
-                        href="#"
+                        onClick={() => {
+                          openCartModal();
+                          addProductToCart(product.id, quantity ? quantity : 1);
+                        }}
                         className="tf-btn btn-fill justify-content-center fw-6 fs-16 flex-grow-1 animate-hover-btn "
                       >
-                        <span>Add to cart -&nbsp;</span>
+                        <span>
+                          {" "}
+                          {isAddedToCartProducts(product.id)
+                            ? "Already Added"
+                            : "Add to cart"}{" "}
+                          -{" "}
+                        </span>
                         <span className="tf-qty-price">
-                          ${(38 * quantity).toFixed(2)}
+                          ${(product.price * quantity).toFixed(2)}
                         </span>
                       </a>
                       <a
-                        href="#"
+                        onClick={() => addToWishlist(product.id)}
                         className="tf-product-btn-wishlist hover-tooltip box-icon bg_white wishlist btn-icon-action"
                       >
-                        <span className="icon icon-heart" />
-                        <span className="tooltip">Add to Wishlist</span>
+                        <span
+                          className={`icon icon-heart ${
+                            isAddedtoWishlist(product.id) ? "added" : ""
+                          }`}
+                        />
+                        <span className="tooltip">
+                          {" "}
+                          {isAddedtoWishlist(product.id)
+                            ? "Already Wishlisted"
+                            : "Add to Wishlist"}
+                        </span>
                         <span className="icon icon-delete" />
                       </a>
                       <a
                         href="#compare"
                         data-bs-toggle="offcanvas"
+                        onClick={() => addToCompareItem(product.id)}
                         aria-controls="offcanvasLeft"
                         className="tf-product-btn-wishlist hover-tooltip box-icon bg_white compare btn-icon-action"
                       >
-                        <span className="icon icon-compare" />
-                        <span className="tooltip">Add to Compare</span>
+                        <span
+                          className={`icon icon-compare ${
+                            isAddedtoCompareItem(product.id) ? "added" : ""
+                          }`}
+                        />
+                        <span className="tooltip">
+                          {isAddedtoCompareItem(product.id)
+                            ? "Already Compared"
+                            : "Add to Compare"}
+                        </span>
                         <span className="icon icon-check" />
                       </a>
                       <div className="w-100">

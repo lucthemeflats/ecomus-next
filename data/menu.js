@@ -336,19 +336,25 @@ export const productDetailPages = [
     heading: "Product layouts",
     links: [
       { href: "/product-detail/1", text: "Product default" },
-      { href: "/product-grid-1", text: "Product grid 1" },
-      { href: "/product-grid-2", text: "Product grid 2" },
-      { href: "/product-stacked", text: "Product stacked" },
-      { href: "/product-right-thumbnails", text: "Product right thumbnails" },
-      { href: "/product-bottom-thumbnails", text: "Product bottom thumbnails" },
-      { href: "/product-drawer-sidebar", text: "Product drawer sidebar" },
+      { href: "/product-grid-1/2", text: "Product grid 1" },
+      { href: "/product-grid-2/3", text: "Product grid 2" },
+      { href: "/product-stacked/4", text: "Product stacked" },
+      { href: "/product-right-thumbnails/5", text: "Product right thumbnails" },
       {
-        href: "/product-description-accordion",
+        href: "/product-bottom-thumbnails/6",
+        text: "Product bottom thumbnails",
+      },
+      { href: "/product-drawer-sidebar/7", text: "Product drawer sidebar" },
+      {
+        href: "/product-description-accordion/8",
         text: "Product description accordion",
       },
-      { href: "/product-description-list", text: "Product description list" },
       {
-        href: "/product-description-vertical",
+        href: "/product-description-list/10",
+        text: "Product description list",
+      },
+      {
+        href: "/product-description-vertical/11",
         text: "Product description vertical",
       },
     ],
@@ -356,23 +362,26 @@ export const productDetailPages = [
   {
     heading: "Product details",
     links: [
-      { href: "/product-inner-zoom", text: "Product inner zoom" },
-      { href: "/product-zoom-magnifier", text: "Product zoom magnifier" },
-      { href: "/product-no-zoom", text: "Product no zoom" },
-      { href: "/product-photoswipe-popup", text: "Product photoswipe popup" },
+      { href: "/product-inner-zoom/12", text: "Product inner zoom" },
+      { href: "/product-zoom-magnifier/13", text: "Product zoom magnifier" },
+      { href: "/product-no-zoom/14", text: "Product no zoom" },
       {
-        href: "/product-zoom-popup",
+        href: "/product-photoswipe-popup/15",
+        text: "Product photoswipe popup",
+      },
+      {
+        href: "/product-zoom-popup/16",
         text: "Product external zoom and photoswipe popup",
       },
-      { href: "/product-video", text: "Product video" },
-      { href: "/product-3d", text: "Product 3D, AR models" },
+      { href: "/product-video/17", text: "Product video" },
+      { href: "/product-3d/18", text: "Product 3D, AR models" },
       {
-        href: "/product-options-customizer",
+        href: "/product-options-customizer/19",
         text: "Product options & customizer",
       },
-      { href: "/product-advanced-types", text: "Advanced product types" },
+      { href: "/product-advanced-types/20", text: "Advanced product types" },
       {
-        href: "/product-giftcard",
+        href: "/product-giftcard/21",
         text: "Recipient information form for gift card products",
       },
     ],
@@ -380,17 +389,17 @@ export const productDetailPages = [
   {
     heading: "Product swatches",
     links: [
-      { href: "/product-color-swatch", text: "Product color swatch" },
-      { href: "/product-rectangle", text: "Product rectangle" },
-      { href: "/product-rectangle-color", text: "Product rectangle color" },
-      { href: "/product-swatch-image", text: "Product swatch image" },
+      { href: "/product-color-swatch/22", text: "Product color swatch" },
+      { href: "/product-rectangle/23", text: "Product rectangle" },
+      { href: "/product-rectangle-color/24", text: "Product rectangle color" },
+      { href: "/product-swatch-image/25", text: "Product swatch image" },
       {
-        href: "/product-swatch-image-rounded",
+        href: "/product-swatch-image-rounded/26",
         text: "Product swatch image rounded",
       },
-      { href: "/product-swatch-dropdown", text: "Product swatch dropdown" },
+      { href: "/product-swatch-dropdown/27", text: "Product swatch dropdown" },
       {
-        href: "/product-swatch-dropdown-color",
+        href: "/product-swatch-dropdown-color/29",
         text: "Product swatch dropdown color",
       },
     ],
@@ -399,21 +408,21 @@ export const productDetailPages = [
     heading: "Product features",
     links: [
       {
-        href: "/product-frequently-bought-together",
+        href: "/product-frequently-bought-together/30",
         text: "Frequently bought together",
       },
       {
-        href: "/product-frequently-bought-together-2",
+        href: "/product-frequently-bought-together-2/31",
         text: "Frequently bought together 2",
       },
-      { href: "/product-upsell-features", text: "Product upsell features" },
-      { href: "/product-pre-orders", text: "Product pre-orders" },
-      { href: "/product-notification", text: "Back in stock notification" },
-      { href: "/product-pickup", text: "Product pickup" },
-      { href: "/product-images-grouped", text: "Variant images grouped" },
-      { href: "/product-complimentary", text: "Complimentary products" },
+      { href: "/product-upsell-features/32", text: "Product upsell features" },
+      { href: "/product-pre-orders/33", text: "Product pre-orders" },
+      { href: "/product-notification/34", text: "Back in stock notification" },
+      { href: "/product-pickup/35", text: "Product pickup" },
+      { href: "/product-images-grouped/36", text: "Variant images grouped" },
+      { href: "/product-complimentary/37", text: "Complimentary products" },
       {
-        href: "/product-quick-order-list",
+        href: "/product-quick-order-list/38",
         text: "Quick order list",
         extra: (
           <div className="demo-label">
@@ -577,7 +586,7 @@ export const pages = [
     className: "menu-link-text link text_black-2 position-relative",
   },
   {
-    href: "/404",
+    href: "/page-not-found",
     text: "404",
     className: "menu-link-text link text_black-2 position-relative",
   },
@@ -702,28 +711,31 @@ export const navItems = [
         label: "Product layouts",
         links: [
           { href: "/product-detail/1", label: "Product default" },
-          { href: "/product-grid-1", label: "Product grid 1" },
-          { href: "/product-grid-2", label: "Product grid 2" },
-          { href: "/product-stacked", label: "Product stacked" },
+          { href: "/product-grid-1/2", label: "Product grid 1" },
+          { href: "/product-grid-2/3", label: "Product grid 2" },
+          { href: "/product-stacked/4", label: "Product stacked" },
           {
-            href: "/product-right-thumbnails",
+            href: "/product-right-thumbnails/5",
             label: "Product right thumbnails",
           },
           {
-            href: "/product-bottom-thumbnails",
+            href: "/product-bottom-thumbnails/6",
             label: "Product bottom thumbnails",
           },
-          { href: "/product-drawer-sidebar", label: "Product drawer sidebar" },
           {
-            href: "/product-description-accordion",
+            href: "/product-drawer-sidebar/7",
+            label: "Product drawer sidebar",
+          },
+          {
+            href: "/product-description-accordion/8",
             label: "Product description accordion",
           },
           {
-            href: "/product-description-list",
+            href: "/product-description-list/9",
             label: "Product description list",
           },
           {
-            href: "/product-description-vertical",
+            href: "/product-description-vertical/10",
             label: "Product description vertical",
           },
         ],
@@ -732,26 +744,32 @@ export const navItems = [
         id: "sub-product-two",
         label: "Product details",
         links: [
-          { href: "/product-inner-zoom", label: "Product inner zoom" },
-          { href: "/product-zoom-magnifier", label: "Product zoom magnifier" },
+          { href: "/product-inner-zoom/11", label: "Product inner zoom" },
+          {
+            href: "/product-zoom-magnifier/12",
+            label: "Product zoom magnifier",
+          },
           { href: "/product-no-zoom", label: "Product no zoom" },
           {
-            href: "/product-photoswipe-popup",
+            href: "/product-photoswipe-popup/13",
             label: "Product photoswipe popup",
           },
           {
-            href: "/product-zoom-popup",
+            href: "/product-zoom-popup/15",
             label: "Product external zoom and photoswipe popup",
           },
-          { href: "/product-video", label: "Product video" },
+          { href: "/product-video/16", label: "Product video" },
           { href: "/product-3d", label: "Product 3D, AR models" },
           {
-            href: "/product-options-customizer",
+            href: "/product-options-customizer/17",
             label: "Product options & customizer",
           },
-          { href: "/product-advanced-types", label: "Advanced product types" },
           {
-            href: "/product-giftcard",
+            href: "/product-advanced-types/18",
+            label: "Advanced product types",
+          },
+          {
+            href: "/product-giftcard/19",
             label: "Recipient information form for gift card products",
           },
         ],
@@ -760,23 +778,23 @@ export const navItems = [
         id: "sub-product-three",
         label: "Product swatchs",
         links: [
-          { href: "/product-color-swatch", label: "Product color swatch" },
+          { href: "/product-color-swatch/20", label: "Product color swatch" },
           { href: "/product-rectangle", label: "Product rectangle" },
           {
-            href: "/product-rectangle-color",
+            href: "/product-rectangle-color/21",
             label: "Product rectangle color",
           },
-          { href: "/product-swatch-image", label: "Product swatch image" },
+          { href: "/product-swatch-image/22", label: "Product swatch image" },
           {
             href: "/product-swatch-image-rounded",
             label: "Product swatch image rounded",
           },
           {
-            href: "/product-swatch-dropdown",
+            href: "/product-swatch-dropdown/23",
             label: "Product swatch dropdown",
           },
           {
-            href: "/product-swatch-dropdown-color",
+            href: "/product-swatch-dropdown-color/24",
             label: "Product swatch dropdown color",
           },
         ],
@@ -786,27 +804,33 @@ export const navItems = [
         label: "Product features",
         links: [
           {
-            href: "/product-frequently-bought-together",
+            href: "/product-frequently-bought-together/25",
             label: "Frequently bought together",
           },
           {
-            href: "/product-frequently-bought-together-2",
+            href: "/product-frequently-bought-together-2/26",
             label: "Frequently bought together 2",
           },
           {
-            href: "/product-upsell-features",
+            href: "/product-upsell-features/27",
             label: "Product upsell features",
           },
-          { href: "/product-pre-orders", label: "Product pre-orders" },
+          { href: "/product-pre-orders/28", label: "Product pre-orders" },
           {
-            href: "/product-notification",
+            href: "/product-notification/28",
             label: "Back in stock notification",
           },
-          { href: "/product-pickup", label: "Product pickup" },
-          { href: "/product-images-grouped", label: "Variant images grouped" },
-          { href: "/product-complimentary", label: "Complimentary products" },
+          { href: "/product-pickup/29", label: "Product pickup" },
           {
-            href: "/product-quick-order-list",
+            href: "/product-images-grouped/30",
+            label: "Variant images grouped",
+          },
+          {
+            href: "/product-complimentary/31",
+            label: "Complimentary products",
+          },
+          {
+            href: "/product-quick-order-list/32",
             label: "Quick order list",
             demoLabel: true,
           },
@@ -832,7 +856,7 @@ export const navItems = [
       { href: "/my-account", label: "My account" },
       { href: "/wishlist", label: "Wishlist" },
       { href: "/terms", label: "Terms and conditions" },
-      { href: "/404", label: "404 page" },
+      { href: "/page-not-found", label: "404 page" },
     ],
   },
   {

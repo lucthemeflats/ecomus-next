@@ -4,9 +4,11 @@ import Image from "next/image";
 import { paymentImages, priceOptions } from "@/data/singleProductOptions";
 import StickyItem from "./StickyItem";
 import Quantity from "./Quantity";
+import { openCartModal } from "@/utlis/openCartModal";
 import { Gallery, Item } from "react-photoswipe-gallery";
 import Drift from "drift-zoom";
-export default function Details12() {
+import { useContextElement } from "@/context/Context";
+export default function Details12({ product }) {
   const [currentPriceOption, setCurrentPriceOption] = useState(priceOptions[0]);
   const [quantity, setQuantity] = useState(1);
   useEffect(() => {
@@ -56,6 +58,14 @@ export default function Details12() {
       });
     };
   }, []);
+  const {
+    addProductToCart,
+    isAddedToCartProducts,
+    addToCompareItem,
+    isAddedtoCompareItem,
+    addToWishlist,
+    isAddedtoWishlist,
+  } = useContextElement();
   return (
     <section
       className="flat-spacing-4 pt_0"
@@ -71,18 +81,28 @@ export default function Details12() {
                     <Item
                       width={770}
                       height={1075}
-                      original="/images/shop/products/gift-card-1.png"
-                      thumbnail="/images/shop/products/gift-card-1.png"
+                      original={
+                        product.imgSrc
+                          ? product.imgSrc
+                          : "/images/shop/products/gift-card-1.png"
+                      }
+                      thumbnail={
+                        product.imgSrc
+                          ? product.imgSrc
+                          : "/images/shop/products/gift-card-1.png"
+                      }
                     >
                       {({ ref, open }) => (
                         <a onClick={open}>
                           <Image
                             ref={ref}
                             className="tf-image-zoom lazyload"
-                            data-zoom="/images/shop/products/gift-card-1.png"
-                            data-src="/images/shop/products/gift-card-1.png"
                             alt=""
-                            src="/images/shop/products/gift-card-1.png"
+                            src={
+                              product.imgSrc
+                                ? product.imgSrc
+                                : "/images/shop/products/gift-card-1.png"
+                            }
                             width={713}
                             height={713}
                           />
@@ -98,10 +118,12 @@ export default function Details12() {
                 <div className="tf-zoom-main" />
                 <div className="tf-product-info-list other-image-zoom">
                   <div className="tf-product-info-title">
-                    <h5>Gift Card</h5>
+                    <h5>
+                      {product.title ? product.title : "Cotton jersey top"}
+                    </h5>
                   </div>
                   <div className="tf-product-info-price">
-                    <div className="price">$25.00</div>
+                    <div className="price">${product.price}</div>
                   </div>
                   <div className="tf-product-info-liveview">
                     <div className="liveview-count">20</div>
@@ -112,7 +134,7 @@ export default function Details12() {
                       <div className="variant-picker-label">
                         Denominations:{" "}
                         <span className="fw-6 variant-picker-label-value">
-                          {currentPriceOption.value}
+                          ${currentPriceOption.value}
                         </span>
                       </div>
                       <form className="variant-picker-values">
@@ -131,7 +153,7 @@ export default function Details12() {
                               htmlFor={option.id}
                               data-value={option.value}
                             >
-                              <p>{option.value}</p>
+                              <p>${option.value}</p>
                             </label>
                           </React.Fragment>
                         ))}
@@ -223,30 +245,56 @@ export default function Details12() {
                         </div>
                       </div>
                       <a
-                        href="#"
+                        onClick={() => {
+                          openCartModal();
+                          addProductToCart(product.id, quantity ? quantity : 1);
+                        }}
                         className="tf-btn btn-fill justify-content-center fw-6 fs-16 flex-grow-1 animate-hover-btn "
                       >
-                        <span>Add to cart -&nbsp;</span>
+                        <span>
+                          {" "}
+                          {isAddedToCartProducts(product.id)
+                            ? "Already Added"
+                            : "Add to cart"}{" "}
+                          -{" "}
+                        </span>
                         <span className="tf-qty-price">
-                          ${(25 * quantity).toFixed(2)}
+                          ${(product.price * quantity).toFixed(2)}
                         </span>
                       </a>
                       <a
-                        href="#"
+                        onClick={() => addToWishlist(product.id)}
                         className="tf-product-btn-wishlist hover-tooltip box-icon bg_white wishlist btn-icon-action"
                       >
-                        <span className="icon icon-heart" />
-                        <span className="tooltip">Add to Wishlist</span>
+                        <span
+                          className={`icon icon-heart ${
+                            isAddedtoWishlist(product.id) ? "added" : ""
+                          }`}
+                        />
+                        <span className="tooltip">
+                          {isAddedtoWishlist(product.id)
+                            ? "Already Wishlisted"
+                            : "Add to Wishlist"}
+                        </span>
                         <span className="icon icon-delete" />
                       </a>
                       <a
                         href="#compare"
                         data-bs-toggle="offcanvas"
+                        onClick={() => addToCompareItem(product.id)}
                         aria-controls="offcanvasLeft"
                         className="tf-product-btn-wishlist hover-tooltip box-icon bg_white compare btn-icon-action"
                       >
-                        <span className="icon icon-compare" />
-                        <span className="tooltip">Add to Compare</span>
+                        <span
+                          className={`icon icon-compare ${
+                            isAddedtoCompareItem(product.id) ? "added" : ""
+                          }`}
+                        />
+                        <span className="tooltip">
+                          {isAddedtoCompareItem(product.id)
+                            ? "Already Compared"
+                            : "Add to Compare"}
+                        </span>
                         <span className="icon icon-check" />
                       </a>
                     </form>

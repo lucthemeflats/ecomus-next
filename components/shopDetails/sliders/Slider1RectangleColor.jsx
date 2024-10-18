@@ -6,45 +6,45 @@ import { Gallery, Item } from "react-photoswipe-gallery";
 import { Navigation, Thumbs } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-const images = [
-  {
-    id: 1,
-    src: "images/products/beige.jpg",
-    alt: "img-product",
-    width: 720,
-    height: 1005,
-    dataValue: "beige",
-  },
-  {
-    id: 2,
-    src: "images/products/pink-2.jpg",
-    alt: "img-product",
-    width: 720,
-    height: 1005,
-    dataValue: "pink",
-  },
-  {
-    id: 3,
-    src: "images/products/blue.jpg",
-    alt: "img-product",
-    width: 720,
-    height: 1005,
-    dataValue: "blue",
-  },
-  {
-    id: 4,
-    src: "images/products/brown-2.jpg",
-    alt: "img-product",
-    width: 720,
-    height: 1005,
-    dataValue: "brown",
-  },
-];
-
 export default function Slider1RectangleColor({
   currentColor = "Beige",
   handleColor = () => {},
+  firstImage,
 }) {
+  const images = [
+    {
+      id: 1,
+      src: firstImage || "/images/products/beige.jpg",
+      alt: "img-product",
+      width: 720,
+      height: 1005,
+      dataValue: "beige",
+    },
+    {
+      id: 2,
+      src: "/images/products/pink-2.jpg",
+      alt: "img-product",
+      width: 720,
+      height: 1005,
+      dataValue: "pink",
+    },
+    {
+      id: 3,
+      src: "/images/products/blue.jpg",
+      alt: "img-product",
+      width: 720,
+      height: 1005,
+      dataValue: "blue",
+    },
+    {
+      id: 4,
+      src: "/images/products/brown-2.jpg",
+      alt: "img-product",
+      width: 720,
+      height: 1005,
+      dataValue: "brown",
+    },
+  ];
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const swiperRef = useRef(null);
   useEffect(() => {

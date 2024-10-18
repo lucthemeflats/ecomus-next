@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
+import { openCartModal } from "@/utlis/openCartModal";
 import {
   colorOptions5,
   paymentImages,
@@ -11,7 +12,8 @@ import StickyItem from "./StickyItem";
 import Quantity from "./Quantity";
 
 import Slider1RectangleColor from "./sliders/Slider1RectangleColor";
-export default function Details15() {
+import { useContextElement } from "@/context/Context";
+export default function Details15({ product }) {
   const [currentColor, setCurrentColor] = useState(colorOptions5[0]);
   const [currentSize, setCurrentSize] = useState(sizeOptions[0]);
   const [quantity, setQuantity] = useState(1);
@@ -23,6 +25,14 @@ export default function Details15() {
       setCurrentColor(updatedColor);
     }
   };
+  const {
+    addProductToCart,
+    isAddedToCartProducts,
+    addToCompareItem,
+    isAddedtoCompareItem,
+    addToWishlist,
+    isAddedtoWishlist,
+  } = useContextElement();
   return (
     <section
       className="flat-spacing-4 pt_0"
@@ -37,6 +47,7 @@ export default function Details15() {
                   <Slider1RectangleColor
                     handleColor={handleColor}
                     currentColor={currentColor.value}
+                    firstImage={product.imgSrc}
                   />
                 </div>
               </div>
@@ -46,11 +57,13 @@ export default function Details15() {
                 <div className="tf-zoom-main" />
                 <div className="tf-product-info-list other-image-zoom">
                   <div className="tf-product-info-title">
-                    <h5>Cotton jersey top</h5>
+                    <h5>
+                      {product.title ? product.title : "Cotton jersey top"}
+                    </h5>
                   </div>
                   <div className="tf-product-info-price">
                     <div className="price-on-sale">
-                      ${currentColor.price.toFixed(2)}
+                      ${product.price.toFixed(2)}
                     </div>
                     <div className="compare-at-price">
                       ${currentColor.oldPrice.toFixed(2)}
@@ -142,29 +155,51 @@ export default function Details15() {
                   <div className="tf-product-info-buy-button">
                     <form onSubmit={(e) => e.preventDefault()} className="">
                       <a
-                        href="#"
+                        onClick={() => {
+                          openCartModal();
+                          addProductToCart(product.id, quantity ? quantity : 1);
+                        }}
                         className="tf-btn btn-fill justify-content-center fw-6 fs-16 flex-grow-1 animate-hover-btn "
                       >
-                        <span>Add to cart -&nbsp;</span>
+                        <span>
+                          {isAddedToCartProducts(product.id)
+                            ? "Already Added"
+                            : "Add to cart"}{" "}
+                          -{" "}
+                        </span>
                         <span className="tf-qty-price">
-                          ${(currentColor.price * quantity).toFixed(2)}
+                          ${(product.price * quantity).toFixed(2)}
                         </span>
                       </a>
                       <a
-                        href="#"
+                        onClick={() => addToWishlist(product.id)}
                         className="tf-product-btn-wishlist hover-tooltip box-icon bg_white wishlist btn-icon-action"
                       >
-                        <span className="icon icon-heart" />
-                        <span className="tooltip">Add to Wishlist</span>
+                        <span
+                          className={`icon icon-heart ${
+                            isAddedtoWishlist(product.id) ? "added" : ""
+                          }`}
+                        />
+                        <span className="tooltip">
+                          {" "}
+                          {isAddedtoWishlist(product.id)
+                            ? "Already Wishlisted"
+                            : "Add to Wishlist"}
+                        </span>
                         <span className="icon icon-delete" />
                       </a>
                       <a
                         href="#compare"
                         data-bs-toggle="offcanvas"
                         aria-controls="offcanvasLeft"
+                        onClick={() => addToCompareItem(product.id)}
                         className="tf-product-btn-wishlist hover-tooltip box-icon bg_white compare btn-icon-action"
                       >
-                        <span className="icon icon-compare" />
+                        <span
+                          className={`icon icon-compare ${
+                            isAddedtoCompareItem(product.id) ? "added" : ""
+                          }`}
+                        />
                         <span className="tooltip">Add to Compare</span>
                         <span className="icon icon-check" />
                       </a>

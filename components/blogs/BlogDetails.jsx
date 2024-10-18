@@ -2,13 +2,12 @@ import React from "react";
 import Image from "next/image";
 export default function BlogDetails({ blog }) {
   return (
-    <> 
+    <>
       <div className="blog-detail">
         <div className="container">
           <div className="row">
             <div className="col-12">
               <div className="blog-detail-main">
-              
                 <div className="blog-detail-main-heading">
                   <ul className="tags-lists justify-content-center">
                     <li>

@@ -7,11 +7,12 @@ import ShopDetailsTab from "@/components/shopDetails/ShopDetailsTab";
 import React from "react";
 import Link from "next/link";
 import DetailsOuterZoom from "@/components/shopDetails/DetailsOuterZoom";
-import { allProducts } from "@/data/products";
 export const metadata = {
   title: "Shop Details || Ecomus - Ultimate Nextjs Ecommerce Template",
   description: "Ecomus - Ultimate Nextjs Ecommerce Template",
 };
+import { allProducts } from "@/data/products";
+import ProductSinglePrevNext from "@/components/common/ProductSinglePrevNext";
 export default function page({ params }) {
   const product =
     allProducts.filter((elm) => elm.id == params.id)[0] || allProducts[0];
@@ -26,28 +27,12 @@ export default function page({ params }) {
                 Home
               </Link>
               <i className="icon icon-arrow-right" />
-              <a href="#" className="text">
-                Women
-              </a>
-              <i className="icon icon-arrow-right" />
+
               <span className="text">
-                {product.title ? product.product : "Cotton jersey top"}
+                {product.title ? product.title : "Cotton jersey top"}
               </span>
             </div>
-            <div className="tf-breadcrumb-prev-next">
-              <a href="#" className="tf-breadcrumb-prev hover-tooltip center">
-                <i className="icon icon-arrow-left" />
-                {/* <span className="tooltip">Cotton jersey top</span> */}
-              </a>
-              <a href="#" className="tf-breadcrumb-back hover-tooltip center">
-                <i className="icon icon-shop" />
-                {/* <span className="tooltip">Back to Women</span> */}
-              </a>
-              <a href="#" className="tf-breadcrumb-next hover-tooltip center">
-                <i className="icon icon-arrow-right" />
-                {/* <span className="tooltip">Cotton jersey top</span> */}
-              </a>
-            </div>
+            <ProductSinglePrevNext currentId={product.id} />
           </div>
         </div>
       </div>

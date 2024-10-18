@@ -206,10 +206,10 @@ export const imageOptions = [
 ];
 
 export const priceOptions = [
-  { id: "values-1", value: "$10", defaultChecked: true },
-  { id: "values-2", value: "$25", defaultChecked: false },
-  { id: "values-3", value: "$50", defaultChecked: false },
-  { id: "values-4", value: "$100", defaultChecked: false },
+  { id: "values-1", value: 10, defaultChecked: true },
+  { id: "values-2", value: 25, defaultChecked: false },
+  { id: "values-3", value: 50, defaultChecked: false },
+  { id: "values-4", value: 60, defaultChecked: false },
 ];
 
 export const colorOptions5 = [

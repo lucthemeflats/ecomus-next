@@ -6,31 +6,33 @@ import { Gallery, Item } from "react-photoswipe-gallery";
 import { Navigation, Thumbs } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-const images = [
-  {
-    id: 1,
-    src: "images/products/kid-14.jpg",
-    alt: "img-product",
-    width: 360,
-    height: 360,
-  },
-  {
-    id: 2,
-    src: "images/products/kid-11.jpg",
-    alt: "img-product",
-    width: 360,
-    height: 360,
-  },
-  {
-    id: 3,
-    src: "images/products/kid-2.jpg",
-    alt: "img-product",
-    width: 360,
-    height: 360,
-  },
-];
-
-export default function Slider1PreOrders({ currentColor = "Beige" }) {
+export default function Slider1PreOrders({
+  currentColor = "Beige",
+  firstImage,
+}) {
+  const images = [
+    {
+      id: 1,
+      src: firstImage || "/images/products/kid-14.jpg",
+      alt: "img-product",
+      width: 360,
+      height: 360,
+    },
+    {
+      id: 2,
+      src: "/images/products/kid-11.jpg",
+      alt: "img-product",
+      width: 360,
+      height: 360,
+    },
+    {
+      id: 3,
+      src: "/images/products/kid-2.jpg",
+      alt: "img-product",
+      width: 360,
+      height: 360,
+    },
+  ];
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const swiperRef = useRef(null);
 

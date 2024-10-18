@@ -60,7 +60,7 @@ export default function Details7() {
                   </div>
                   <div className="tf-product-info-price">
                     <div className="price-on-sale">
-                      ${currentColor.price.toFixed(2)}
+                      ${product.price.toFixed(2)}
                     </div>
                     <div className="compare-at-price">
                       ${currentColor.oldPrice.toFixed(2)}
@@ -82,10 +82,7 @@ export default function Details7() {
                       <div className="tf-countdown style-1">
                         <div className="js-countdown">
                           {" "}
-                          <CountdownComponent
-                            targetDate="2025-08-07"
-                            labels="Days :,Hours :,Mins :,Secs"
-                          />
+                          <CountdownComponent labels="Days :,Hours :,Mins :,Secs" />
                         </div>
                       </div>
                     </div>
@@ -174,7 +171,7 @@ export default function Details7() {
                       >
                         <span>Add to cart -&nbsp;</span>
                         <span className="tf-qty-price">
-                          ${(currentColor.price * quantity).toFixed(2)}
+                          ${(product.price * quantity).toFixed(2)}
                         </span>
                       </a>
                       <a
